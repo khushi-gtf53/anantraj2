@@ -1,10 +1,10 @@
-import HeroAboutus from '@/src/components/about/HeroAboutus'
-import DiscoverContent from '@/src/components/about/DiscoverContent'
-import VisionAndMission from '@/src/components/about/VisionAndMission'
-import OurStory from '@/src/components/about/OurStory'
-import Brands from '@/src/components/about/Brands'
-import AboutusTeam from '@/src/components/about/AboutusTeam'
-import AboutTestimonials from '@/src/components/about/AboutTestimonials'
+import AboutTestimonials from "@/src/components/website/about/AboutTestimonials"
+import AboutusTeam from "@/src/components/website/about/AboutusTeam"
+import Brands from "@/src/components/website/about/Brands"
+import DiscoverContent from "@/src/components/website/about/DiscoverContent"
+import HeroAboutus from "@/src/components/website/about/HeroAboutus"
+import OurStory from "@/src/components/website/about/OurStory"
+import VisionAndMission from "@/src/components/website/about/VisionAndMission"
 
 export const metadata = {
   title: "About Us | Anant Raj",

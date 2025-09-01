@@ -1,8 +1,11 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Header from "../components/common/Header";
-import Footer from "../components/common/Footer";
-import HtmlSanitizer from "../components/common/HtmlSanitizer"; // we'll create this
+import "../globals.css";
+import HtmlSanitizer from "@/src/components/website/common/HtmlSanitizer";
+import Header from "@/src/components/website/common/Header";
+import Footer from "@/src/components/website/common/Footer";
+// import Header from "../components/website/common/Header";
+// import Footer from "../components/website/common/Footer";
+// import HtmlSanitizer from "../components/website/common/HtmlSanitizer"; // we'll create this
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
