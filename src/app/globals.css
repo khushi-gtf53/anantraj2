@@ -13,6 +13,12 @@ body {
   position: relative;
 }
 
+button,
+a,
+select {
+  cursor: pointer;
+}
+
 .swiper-container {
   overflow-x: hidden;
 }
@@ -71,6 +77,7 @@ body {
   padding-inline: 20px;
   padding-block: 40px;
 }
+
 .wrapper2 {
   padding-inline: 20px;
   padding-top: 40px;
@@ -115,6 +122,41 @@ body {
   width: fit-content !important;
 }
 
+
+/* blog & career & slider ctrl btns */
+.carousel-control .swiper-button-next,
+.carousel-control .swiper-button-prev {
+  position: relative;
+  bottom: 80px;
+  margin-bottom: 0 !important;
+  right: 0;
+  left: inherit !important;
+  margin: 0 auto;
+  margin-right: 0;
+  width: 50px;
+  z-index: 2;
+  background: url('/assets/next.png') no-repeat;
+}
+
+.carousel-control .swiper-button-prev {
+  bottom: 36px;
+  right: 50px;
+  background: url('/assets/prev.png') no-repeat;
+}
+
+.carousel-control .swiper-button-prev:after,
+.carousel-control .swiper-button-next:after {
+  display: none;
+}
+
+.myCareerlider .swiper-button-next {
+  bottom: 15px;
+}
+
+.myCareerlider .swiper-button-prev {
+  bottom: -30px;
+}
+
 @media (width >=64rem
   /* 1024px */
 ) {
@@ -122,6 +164,7 @@ body {
     padding-inline: 100px;
     padding-block: 100px;
   }
+
   .wrapper2 {
     padding-inline: 100px;
     padding-top: 100px;
