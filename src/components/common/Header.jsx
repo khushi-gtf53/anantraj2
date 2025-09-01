@@ -98,7 +98,7 @@ const Header = () => {
           )
         )}
         <button
-          className={`relative w-6 h-6 ${pathname.includes("aboutus") || (!isAtTop && showHeader)
+          className={`relative w-6 h-6 ${isAboutUs || (!isAtTop && showHeader)
             ? "text-black"
             : isAtTop && showHeader
               ? "text-white"
@@ -108,7 +108,7 @@ const Header = () => {
         >
           <img
             src={
-              pathname.includes("aboutus") || !isAtTop || !showHeader
+              isAboutUs || !isAtTop || !showHeader
                 ? "/assets/black-hamburger.png"
                 : "/assets/hamburger.png"
             }
