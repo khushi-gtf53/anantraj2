@@ -71,6 +71,10 @@ body {
   padding-inline: 20px;
   padding-block: 40px;
 }
+.wrapper2 {
+  padding-inline: 20px;
+  padding-top: 40px;
+}
 
 .hero::before {
   content: "";
@@ -117,5 +121,9 @@ body {
   .wrapper {
     padding-inline: 100px;
     padding-block: 100px;
+  }
+  .wrapper2 {
+    padding-inline: 100px;
+    padding-top: 100px;
   }
 }
