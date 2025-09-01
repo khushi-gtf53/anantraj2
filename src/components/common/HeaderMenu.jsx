@@ -20,8 +20,8 @@ const HeaderMenu = ({ isOpen, onClose }) => {
 
   const footerNavItems = [
     [
-      { label: "About Us", link: "about" },
-      { label: "CSR", link: "#" },
+      { label: "About Us", link: "aboutus" },
+      { label: "CSR", link: "csr" },
       { label: "Tax Benefits", link: "#" },
     ],
     [
@@ -30,8 +30,8 @@ const HeaderMenu = ({ isOpen, onClose }) => {
       { label: "Property Investment", link: "#" },
     ],
     [
-      { label: "Blogs", link: "#" },
-      { label: "Gallery", link: "#" },
+      { label: "Blogs", link: "blogs" },
+      { label: "Gallery", link: "gallery" },
     ],
     [
       { label: "EMI calculator", link: "#" },
