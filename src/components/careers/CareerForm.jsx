@@ -4,6 +4,9 @@ import React from 'react'
 import CommonHeading from '../common/CommonHeading'
 
 export default function CareerForm() {
+
+  
+
   return (
     <div className="pt-8" id='join-us'>
       <CommonHeading>Build Your Career, Build With Us</CommonHeading>
@@ -79,15 +82,15 @@ export default function CareerForm() {
           <div className="relative lg:w-[48%] w-full">
             <input
               type="text"
-              id="experience1"
+              id="skills"
               className="peer w-full border-b border-gray-400 focus:outline-none focus:border-[#263A7F] pt-6 pb-1"
               required
             />
             <label
-              htmlFor="experience1"
+              htmlFor="skills"
               className="absolute left-0 top-1 text-sm text-gray-500 transition-all duration-200 peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-sm peer-focus:text-[#263A7F]"
             >
-              Job Experience
+              Job Skills
             </label>
           </div>
 
@@ -95,12 +98,12 @@ export default function CareerForm() {
           <div className="relative lg:w-[48%] w-full">
             <input
               type="text"
-              id="experience2"
+              id="experience"
               className="peer w-full border-b border-gray-400 focus:outline-none focus:border-[#263A7F] pt-6 pb-1"
               required
             />
             <label
-              htmlFor="experience2"
+              htmlFor="experience"
               className="absolute left-0 top-1 text-sm text-gray-500 transition-all duration-200 peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-sm peer-focus:text-[#263A7F]"
             >
               Job Experience
@@ -110,6 +113,7 @@ export default function CareerForm() {
           {/* File Upload */}
           <div className="relative lg:w-[48%] w-full">
             <input type="file"
+              title='Upload CV'
               className="block mt-5 w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-none file:border-0 file:text-sm file:font-semibold file:bg-[#263A7F] file:text-white hover:file:bg-[#263a7f] cursor-pointer border-b border-gray-400"
             />
           </div>

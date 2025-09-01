@@ -102,7 +102,7 @@ export default function Career() {
                     </Swiper>
                 </>
                 <JobList />
-                {/* <CareerForm /> */}
+                <CareerForm />
             </div>
         </div>
     )
