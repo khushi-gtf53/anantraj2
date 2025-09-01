@@ -1,5 +1,5 @@
-import ProjectAbout from "@/src/components/website/projects/ProjectAbout"
-import ProjectsPage from "@/src/components/website/projects/ProjectsPage"
+import ProjectAbout from "@/src/website/components/projects/ProjectAbout"
+import ProjectsPage from "@/src/website/components/projects/ProjectsPage"
 
 // ✅ SEO metadata for Projects page
 export const metadata = {

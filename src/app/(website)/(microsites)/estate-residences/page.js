@@ -1,11 +1,11 @@
-import AboutProject from "@/src/components/website/microsite/AboutProject";
-import Amenities from "@/src/components/website/microsite/Amenities";
-import Banner from "@/src/components/website/microsite/Banner"
-import FloorPlan from "@/src/components/website/microsite/FloorPlan";
-import Gallery from "@/src/components/website/microsite/Gallery";
-import HighlightsSpecifications from "@/src/components/website/microsite/HighlightsSpecifications";
-import LocationAdvantages from "@/src/components/website/microsite/LocationAdvantages";
-import ProjectOverview from "@/src/components/website/microsite/ProjectOverview";
+import AboutProject from "@/src/website/components/microsite/AboutProject";
+import Amenities from "@/src/website/components/microsite/Amenities";
+import Banner from "@/src/website/components/microsite/Banner"
+import FloorPlan from "@/src/website/components/microsite/FloorPlan";
+import Gallery from "@/src/website/components/microsite/Gallery";
+import HighlightsSpecifications from "@/src/website/components/microsite/HighlightsSpecifications";
+import LocationAdvantages from "@/src/website/components/microsite/LocationAdvantages";
+import ProjectOverview from "@/src/website/components/microsite/ProjectOverview";
 
 const page = () => {
   const bannerslides = [

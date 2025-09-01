@@ -1,8 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
-import HtmlSanitizer from "@/src/components/website/common/HtmlSanitizer";
-import Header from "@/src/components/website/common/Header";
-import Footer from "@/src/components/website/common/Footer";
+import HtmlSanitizer from "@/src/website/components/common/HtmlSanitizer";
+import Header from "@/src/website/components/common/Header";
+import Footer from "@/src/website/components/common/Footer";
 // import Header from "../components/website/common/Header";
 // import Footer from "../components/website/common/Footer";
 // import HtmlSanitizer from "../components/website/common/HtmlSanitizer"; // we'll create this

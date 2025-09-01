@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import "../../../components/website/microsite/style.css";
+import "../microsite/style.css";
 import Link from "next/link";
 import CommonHeading from "../common/CommonHeading";
 import CommonPera from "../common/CommonPera";

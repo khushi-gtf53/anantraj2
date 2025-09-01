@@ -1,5 +1,5 @@
-import ContactForm from "@/src/components/website/contact/ContactForm"
-import HeroContactus from "@/src/components/website/contact/HeroContactus"
+import ContactForm from "@/src/website/components/contact/ContactForm"
+import HeroContactus from "@/src/website/components/contact/HeroContactus"
 
 const page = () => {
   return (

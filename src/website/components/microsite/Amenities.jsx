@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useRef, useState } from "react";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
-import SetupGsapAnimations from "../../../utils/animation";
+import SetupGsapAnimations from "../../utils/animation";
 import gsap from "gsap";
 import CommonHeading from "../../components/common/CommonHeading"
 

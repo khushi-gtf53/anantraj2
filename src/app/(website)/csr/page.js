@@ -1,6 +1,6 @@
-import CsrAbout from "@/src/components/website/csr/CsrAbout";
-import CsrContent from "@/src/components/website/csr/CsrContent";
-import CsrGallery from "@/src/components/website/csr/CsrGallery";
+import CsrAbout from "@/src/website/components/csr/CsrAbout";
+import CsrContent from "@/src/website/components/csr/CsrContent";
+import CsrGallery from "@/src/website/components/csr/CsrGallery";
 
 export const metadata = {
   title: "Corporate Social Responsibility | Anant Raj",

@@ -1,5 +1,5 @@
-import PlatterAbout from "@/src/components/website/platter/residential/PlatterAbout"
-import PlatterProjects from "@/src/components/website/platter/residential/PlatterProjects"
+import PlatterAbout from "@/src/website/components/platter/residential/PlatterAbout"
+import PlatterProjects from "@/src/website/components/platter/residential/PlatterProjects"
 
 const page = () => {
   const projectTabs = [
