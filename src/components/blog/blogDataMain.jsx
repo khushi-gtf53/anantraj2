@@ -182,9 +182,7 @@ export default function BlogDataMain() {
                         </div>
 
                     </div>
-                )
-
-                }
+                )}
             </div>
         </div>
     );
