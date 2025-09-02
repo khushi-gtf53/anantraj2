@@ -112,10 +112,6 @@ const Footer = () => {
                     <div className="flex  mt-[20px] flex-col space-y-2">
                       <Link href="">
                         <span className="mr-2">&gt;</span>
-                        EMI Calculator
-                      </Link>
-                      <Link href="">
-                        <span className="mr-2">&gt;</span>
                         CSR
                       </Link>
                     </div>
@@ -125,10 +121,6 @@ const Footer = () => {
                       <Link href="">
                         <span className="mr-2">&gt;</span>
                         Gallery
-                      </Link>
-                      <Link href="">
-                        <span className="mr-2">&gt;</span>
-                        Testimonials
                       </Link>
                     </div>
                   )}
@@ -150,14 +142,10 @@ const Footer = () => {
               </div>
               {isExploreOpen && (
                 <div className="flex mt-[20px] flex-col space-y-2">
-                  <Link href="">
-                    <span className="mr-2">&gt;</span>
-                    Home Loans
-                  </Link>
-                  <Link href="">
+                  {/* <Link href="">
                     <span className="mr-2">&gt;</span>
                     Tax Benefits
-                  </Link>
+                  </Link> */}
                 </div>
               )}
             </div>
@@ -172,7 +160,7 @@ const Footer = () => {
                   Investors
                 </Link>
               </div>
-              {isExploreOpen && (
+              {/* {isExploreOpen && (
                 <div className="flex mt-[20px] flex-col space-y-2">
                   <Link href="">
                     <span className="mr-2">&gt;</span>
@@ -183,7 +171,7 @@ const Footer = () => {
                     NRI Investors
                   </Link>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
           {/* mobile links */}
@@ -244,10 +232,6 @@ const Footer = () => {
                     <Link href="">
                       <span className="mr-2">&gt;</span>
                       EMI Calculator
-                    </Link>
-                    <Link href="">
-                      <span className="mr-2">&gt;</span>
-                      Property Investment
                     </Link>
                   </div>
                 )}
