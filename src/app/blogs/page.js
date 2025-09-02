@@ -1,26 +1,10 @@
 import React from 'react'
-import CommonHeroSec from '@/src/components/common/CommonHeroSec';
-import BlogDataMain from '@/src/components/blog/blogDataMain';
-
-const Obj = {
-  title: "About Us",
-  heading: "Our Blogs",
-  subtitle: "Thoughtfully designed homes that blend comfort, elegance, and modern living,  offering serene spaces that elevate everyday lifestyles",
-  imgUrl: "/assets/blogs/blog.webp",
-  linkTo: "discover-blogs",
-  tabs: [
-    { tabname: "latest blog", tablink: "latest" }
-    , { tabname: "old blog", tablink: "old" }
-  ]
-}
-
+import Blog from '@/src/components/blog/blog';
 
 export default function blog() {
-
   return (
     <div className='blog__page bg-[#FBF6F6] mb-14'>
-      <CommonHeroSec ObjData={Obj} />
-      <BlogDataMain />
+      <Blog />
     </div>
   )
 }

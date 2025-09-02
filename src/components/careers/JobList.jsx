@@ -1,7 +1,8 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import CommonHeading from '../../components/common/CommonHeading'
+import Pagination from '../common/Pagination';
 
 const jobs = [
   {
@@ -19,6 +20,8 @@ const jobs = [
 ]
 
 export default function JobList() {
+  const [currentPage, setCurrentPage] = useState(1);
+
   if (!jobs) return null;
   return (
     <div className='JobList pt-8' id='all-jobs'>
@@ -52,12 +55,13 @@ export default function JobList() {
         )
       }
 
-      <ul className='flex gap-1 justify-end pt-5 transition-all'>
-        <li className='active text-[16px] cursor-pointer font-bold'>1  </li>
-        <li className='text-gray-500 text-[16px] cursor-pointer font-[300]'><span>|</span> 2</li>
-        <li className='text-gray-500 text-[16px] cursor-pointer font-[300]'><span>|</span> 3</li>
-        <li className='text-gray-500 text-[16px] cursor-pointer font-[300]'><span>|</span> 4</li>
-      </ul>
+      <div className='flex lg:justify-end justify-center lg:pt-5 pt-8'>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={4}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
+      </div>
 
     </div>
   )

@@ -71,7 +71,7 @@ const Footer = () => {
               </div>
               {isExploreOpen && (
                 <div className="flex mt-[20px] flex-col space-y-2">
-                  <Link href="">
+                  <Link href="blogs">
                     <span className="mr-2">&gt;</span>
                     Blogs
                   </Link>
@@ -83,13 +83,9 @@ const Footer = () => {
               )}
               {isExploreOpen && (
                 <div className="flex  mt-[20px] flex-col space-y-2">
-                  <Link href="">
+                  <Link href="careers">
                     <span className="mr-2">&gt;</span>
-                    Career
-                  </Link>
-                  <Link href="">
-                    <span className="mr-2">&gt;</span>
-                    Property Investment
+                    Careers
                   </Link>
                 </div>
               )}
@@ -110,7 +106,7 @@ const Footer = () => {
                   {" "}
                   {isExploreOpen && (
                     <div className="flex  mt-[20px] flex-col space-y-2">
-                      <Link href="">
+                      <Link href="csr">
                         <span className="mr-2">&gt;</span>
                         CSR
                       </Link>
@@ -118,7 +114,7 @@ const Footer = () => {
                   )}
                   {isExploreOpen && (
                     <div className="flex  mt-[20px] flex-col space-y-2">
-                      <Link href="">
+                      <Link href="gallery">
                         <span className="mr-2">&gt;</span>
                         Gallery
                       </Link>
@@ -155,7 +151,7 @@ const Footer = () => {
                   <span className="mr-2">&gt;</span>
                   About Us
                 </Link>
-                <Link href="">
+                <Link href="investors">
                   <span className="mr-2">&gt;</span>
                   Investors
                 </Link>
@@ -215,11 +211,11 @@ const Footer = () => {
             </div>
             <div>
               <div className="flex  flex-col space-y-2">
-                <Link href="">
+                <Link href="projects">
                   <span className="mr-2">&gt;</span>
                   Residential
                 </Link>
-                <Link href="">
+                <Link href="projects">
                   <span className="mr-2">&gt;</span>
                   Commercial
                 </Link>

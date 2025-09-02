@@ -4,74 +4,12 @@ import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import gsap from 'gsap';
 import BlogCard from './blogCard';
 import CommonHeading from '../common/CommonHeading';
+import Pagination from '../common/Pagination';
 
 
-const blogsData = {
-    latest: [
-        {
-            img: '/assets/blogs/blog-1.webp',
-            alt: 'blog 1',
-            title: 'Anant Raj Manesar: Pioneering Innovation at the Heart of IT  Innovation at the Heart of IT ',
-            slug: 'blog-1',
-            date: '2025-07-29'
-        },
-        {
-            img: '/assets/blogs/blog-2.webp',
-            alt: 'blog 1',
-            title: 'Township Living Redefined: The Rise of Integrated Communities',
-            slug: 'blog-1',
-            date: '2025-07-29'
-        },
-        {
-            img: '/assets/blogs/blog-2.webp',
-            alt: 'blog 1',
-            title: 'Township Living Redefined: The Rise of Integrated Communities',
-            slug: 'blog-1',
-            date: '2025-07-29'
-        },
-        {
-            img: '/assets/blogs/blog-2.webp',
-            alt: 'blog 1',
-            title: 'Township Living Redefined: The Rise of Integrated Communities',
-            slug: 'blog-1',
-            date: '2025-07-29'
-        },
-    ],
 
-    old: [
-        {
-            img: '/assets/blogs/blog-1.webp',
-            alt: 'blog 1',
-            title: 'Anant Raj Manesar: Pioneering Innovation at the Heart of IT  Innovation at the Heart of IT ',
-            slug: 'blog-1',
-            date: '2025-07-29'
-        },
-        {
-            img: '/assets/blogs/blog-2.webp',
-            alt: 'blog 1',
-            title: 'Township Living Redefined: The Rise of Integrated Communities',
-            slug: 'blog-1',
-            date: '2025-07-29'
-        },
-        {
-            img: '/assets/blogs/blog-1.webp',
-            alt: 'blog 1',
-            title: 'Anant Raj Manesar: Pioneering Innovation at the Heart of IT  Innovation at the Heart of IT ',
-            slug: 'blog-1',
-            date: '2025-07-29'
-        },
-        {
-            img: '/assets/blogs/blog-2.webp',
-            alt: 'blog 1',
-            title: 'Township Living Redefined: The Rise of Integrated Communities',
-            slug: 'blog-1',
-            date: '2025-07-29'
-        },
-    ]
-
-}
-
-export default function BlogDataMain() {
+export default function BlogDataMain({ blogsData }) {
+    const [currentPage, setCurrentPage] = useState(1);
     const [expandedSection, setExpandedSection] = useState('latest');
 
     const latestRef = useRef(null);
@@ -157,6 +95,13 @@ export default function BlogDataMain() {
                                     </div>
                                 ))}
                             </div>
+                            <div className='flex lg:justify-end lg:pt-0 pt-8'>
+                                <Pagination
+                                    currentPage={currentPage}
+                                    totalPages={4}
+                                    onPageChange={(page) => setCurrentPage(page)}
+                                />
+                            </div>
                         </div>
                     </div>
                 )}
@@ -179,8 +124,14 @@ export default function BlogDataMain() {
                                     </div>
                                 ))}
                             </div>
+                            <div className='flex lg:justify-end lg:pt-0 pt-8'>
+                                <Pagination
+                                    currentPage={currentPage}
+                                    totalPages={4}
+                                    onPageChange={(page) => setCurrentPage(page)}
+                                />
+                            </div>
                         </div>
-
                     </div>
                 )}
             </div>
