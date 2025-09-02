@@ -17,6 +17,7 @@ const ProjectsPages=[
 ];
 const CMSPages=[
   {name:"Timeline",slug:"timeline"},
+  {name:"Amenities Logo",slug:"amenities-logo"},
   {name:"Awards",slug:"award"},
   {name:"News",slug:"news"},
   {name:"Blogs",slug:"blog"},

@@ -49,6 +49,16 @@ const sectionConfigs = {
     endpoint: "journey",
     label: "Timeline",
   },
+  "amenities-logo": {
+    fields: [
+      { type: "text", name: "name", label: "Name" },
+      { type: "image", name: "image", label: "Image" },
+      { type: "text", name: "alt", label: "Alt Tag" },
+    ],
+    table: { head: ["Name","Short Description","Image"], header: ["name","short_description","image"] },
+    endpoint: "amenities-logo",
+    label: "Amenities Logo",
+  },
   award: {
     fields: [
       { type: "text", name: "title", label: "Title" },
