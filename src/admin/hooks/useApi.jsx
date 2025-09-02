@@ -1,3 +1,4 @@
+"use client";
 import { useState, useCallback } from "react";
 
 // Helper: Convert plain object to FormData

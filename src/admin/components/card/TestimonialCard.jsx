@@ -1,11 +1,11 @@
+import { BASE_ADMIN } from "@/config";
 import React from "react";
-import Card from "./Card";
-import CardHeading from "./CardHeading";
 import { FaAddressCard } from "react-icons/fa";
 import { FaCalendar } from "react-icons/fa";
 import { useApi } from "../../hooks/useApi";
-import { BASE_ADMIN } from "../../../../config";
 import { useCrud } from "../../hooks/useCrud";
+import Card from "./Card";
+import CardHeading from "./CardHeading";
 
 const TestimonialCard = () => {
   const api = useApi(BASE_ADMIN);

@@ -1,8 +1,8 @@
 import React from "react";
 import Card from "./Card";
 import CardHeading from "./CardHeading";
-import { Link } from "react-router-dom";
 import { RiPagesFill } from "react-icons/ri";
+import Link from "next/link";
 
 const SectionsCard = ({ title, icon,data,cms=false }) => {
   
@@ -22,7 +22,7 @@ const SectionsCard = ({ title, icon,data,cms=false }) => {
                 </div>
                 <div>
                   <p className="leading-[20px] text-white text-[13px]">{item?.name}</p>
-                  <Link to={cms ? `/admin/cms/${item?.slug }`:`page/${item?.slug}`} ><p className="text-[var(--admin-secondary)] !text-[12px]">View Details</p></Link>
+                  <Link href={cms ? `/admin/cms/${item?.slug }`:`page/${item?.slug}`} ><p className="text-[var(--admin-secondary)] !text-[12px]">View Details</p></Link>
                 </div>
               </div>
             </Card>

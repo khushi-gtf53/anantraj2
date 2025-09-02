@@ -1,18 +1,21 @@
 "use client"
 
-import ProjectCard from "../components/card/ProjectCard";
-import TestimonialCard from "../components/card/TestimonialCard";
-import ProjectList from "../components/card/ProjectList";
-import SectionsCard from "../components/card/SectionsCard";
 import { RiPagesFill } from "react-icons/ri";
 import { useState } from "react";
-import { useApi } from "../hooks/useApi";
-import { BASE_ADMIN } from "../../../config";
-import { useCrud } from "../hooks/useCrud";
+import ProjectCard from "@/src/admin/components/card/ProjectCard";
+import TestimonialCard from "@/src/admin/components/card/TestimonialCard";
+import SectionsCard from "@/src/admin/components/card/SectionsCard";
+import ProjectList from "@/src/admin/components/card/ProjectList";
+import { useCrud } from "@/src/admin/hooks/useCrud";
+import { useApi } from "@/src/admin/hooks/useApi";
+import { BASE_ADMIN } from "@/config";
 
-
-const CMSPages=[
+const ProjectsPages=[
   {name:"Platter",slug:"platter"},
+  {name:"Typologies",slug:"typologies"},
+  {name:"Sub Typologies",slug:"sub-typologies"},
+];
+const CMSPages=[
   {name:"Timeline",slug:"timeline"},
   {name:"Awards",slug:"award"},
   {name:"News",slug:"news"},
@@ -36,6 +39,7 @@ const Dashboard = () => {
           <div className="col-span-6"><TestimonialCard/></div>
         </div>
         <SectionsCard title="Pages" icon={RiPagesFill} data={pages}/>
+        <SectionsCard title="Projects Sections" icon={RiPagesFill} data={ProjectsPages} cms={true}/>
         <SectionsCard title="CMS Sections" icon={RiPagesFill} data={CMSPages} cms={true}/>
       </div>
       <div className="col-span-4">

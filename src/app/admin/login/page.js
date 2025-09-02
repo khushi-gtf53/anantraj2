@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { BASE_ADMIN } from "../../../../config"; // adjust path as needed
-import { useApi } from "../hooks/useApi";
+import { BASE_ADMIN } from "@/config";
+import { useApi } from "@/src/admin/hooks/useApi";
 
 const Login = () => {
   const router = useRouter();

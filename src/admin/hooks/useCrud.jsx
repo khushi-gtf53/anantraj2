@@ -1,3 +1,4 @@
+"use client"
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
@@ -37,7 +38,7 @@ export const useCrud = (api, endpoint, tableHeader,autoFetch = true) => {
         setPagination(response?.pagination || {});
       }
     } catch (err) {
-      console.error(err,"fetch error");
+      console.log(err,"fetch error");
       toast.error(err);
     }
   };

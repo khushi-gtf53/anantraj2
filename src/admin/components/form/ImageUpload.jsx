@@ -1,7 +1,9 @@
+"use client";
 import React, { useState, useEffect, useRef } from 'react';
 import Label from './Label';
 import { FaUpload } from 'react-icons/fa';
-import { BASE_URL } from '../../../../config';
+import { BASE_URL } from '@/config';
+// import { BASE_URL } from '../../../../config';
 
 const ImageUpload = ({ label, name, value, onChange, required = false, reset }) => {
   const [preview, setPreview] = useState('');

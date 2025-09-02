@@ -2,8 +2,8 @@ import React from "react";
 import Card from "./Card";
 import CardHeading from "./CardHeading";
 import { IoMdHome } from "react-icons/io";
-import { Link } from "react-router-dom";
 import { IoAddCircleOutline } from "react-icons/io5";
+import Link from "next/link";
 
 const ProjectCard = ({data}) => {
   return (
@@ -17,11 +17,11 @@ const ProjectCard = ({data}) => {
           </p>
 
           <div className="flex justify-start gap-[10px] mt-[20px] w-full">
-            <Link to="/admin/project-list" className="bg-[var(--admin-secondary)] text-[12px] 2xl:text-[13px] flex justify-center px-[25px] 2xl:px-[30px] py-[9px] rounded-[50px]  text-white">
+            <Link href="/admin/project-list" className="bg-[var(--admin-secondary)] text-[12px] 2xl:text-[13px] flex justify-center px-[25px] 2xl:px-[30px] py-[9px] rounded-[50px]  text-white">
             View Details
           </Link>
 
-          <Link to="/admin/project" className="border border-[var(--admin-secondary)] group hover:bg-[var(--admin-secondary)]  text-[10px] 2xl:text-[11px] flex justify-center items-center gap-[5px] px-[15px] 2xl:px-[20px] py-[9px] rounded-[50px] tracking-[0.5px] font-robotoLight text-white">
+          <Link href="/admin/project" className="border border-[var(--admin-secondary)] group hover:bg-[var(--admin-secondary)]  text-[10px] 2xl:text-[11px] flex justify-center items-center gap-[5px] px-[15px] 2xl:px-[20px] py-[9px] rounded-[50px] tracking-[0.5px] font-robotoLight text-white">
             <IoAddCircleOutline className="text-[var(--admin-secondary)] group-hover:text-white text-[20px]"/> New Project
           </Link>
           </div>

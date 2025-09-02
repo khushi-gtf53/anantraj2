@@ -4,7 +4,7 @@ import { TiHome } from "react-icons/ti";
 import { GoFileMedia } from "react-icons/go";
 import { SiBloglovin } from "react-icons/si";
 import { MdContactPage } from "react-icons/md";
-import { Link } from 'react-router-dom'; // or next/link if you're in Next.js
+import Link from 'next/link';
 
 const menuItems = [
   {
@@ -41,7 +41,7 @@ const LeftSidebar = () => {
         {/* Menu */}
         {menuItems.map((item, index) => (
           <li key={index} className="h-[60px] rounded-l-3xl transition-all duration-300 flex items-center">
-            <Link to={item.href} className='flex items-start gap-[35px] text-[#717177] hover:text-white'>
+            <Link href={item.href} className='flex items-start gap-[35px] text-[#717177] hover:text-white'>
                 <span className="icon text-xl flex justify-center">{item.icon}</span>
                 <span className="title whitespace-nowrap">{item.label}</span> 
             

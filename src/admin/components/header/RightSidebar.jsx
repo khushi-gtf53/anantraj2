@@ -5,13 +5,14 @@ import { GoInfo } from "react-icons/go";
 import { ImImage } from "react-icons/im";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { PiMountains } from "react-icons/pi";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { useApi } from "../../hooks/useApi";
 import { useCrud } from "../../hooks/useCrud";
 import { BASE_ADMIN } from "../../../../config";
 import { FaImage } from "react-icons/fa";
+import Link from "next/link";
 
 const menuItems = [<IoDocumentTextOutline />,<ImImage />,<GoInfo />,<FaTools />
 ];
@@ -56,12 +57,12 @@ const RightSidebar = ({projectId,activeSlug}) => {
             ${activeIndex === 0 ? "bg-[var(--admin-secondary)] text-white" : "hover:bg-[var(--admin-secondary)] text-[#717177] hover:text-white"}`}
           onClick={() => setActiveIndex(0)}
         >
-          <NavLink to={`/admin/project/${projectId}`} className="flex p-[30px] items-center gap-[35px] w-full">
+          <Link href={`/admin/project/${projectId}`} className="flex p-[30px] items-center gap-[35px] w-full">
             <span className="icon text-xl flex justify-center">
               <IoDocumentTextOutline />
             </span>
             {isOpen && <span className="title whitespace-nowrap">Basic</span>}
-          </NavLink>
+          </Link>
         </li>
 
         {/* for banner */}
@@ -74,12 +75,12 @@ const RightSidebar = ({projectId,activeSlug}) => {
             ${activeIndex === 1 ? "bg-[var(--admin-secondary)] text-white" : "hover:bg-[var(--admin-secondary)] text-[#717177] hover:text-white"}`}
           onClick={() => setActiveIndex(1)}
         >
-          <NavLink to={`/admin/project/${projectId}/banner`} className="flex p-[30px] items-center gap-[35px] w-full">
+          <Link href={`/admin/project/${projectId}/banner`} className="flex p-[30px] items-center gap-[35px] w-full">
             <span className="icon text-xl flex justify-center">
               <FaImage />
             </span>
             <span className="title whitespace-nowrap">Banner</span>
-          </NavLink>
+          </Link>
         </li>
            {/* Dynamic items from API */}
         {tableData?.map((item, index) => (
@@ -91,12 +92,12 @@ const RightSidebar = ({projectId,activeSlug}) => {
               ${item?.slug === activeSlug ? "bg-[var(--admin-secondary)] text-white" : "hover:bg-[var(--admin-secondary)] text-[#717177] hover:text-white"}`}
             onClick={() => setActiveIndex(index + 2)}
           >
-            <NavLink to={`/admin/project/${projectId}/${item?.slug}`} className="flex p-[30px] items-center gap-[35px] w-full h-full">
+            <Link href={`/admin/project/${projectId}/${item?.slug}`} className="flex p-[30px] items-center gap-[35px] w-full h-full">
               <span className="icon text-xl flex justify-center">
                 {menuItems[index] || <IoDocumentTextOutline />}
               </span>
               <span className="title whitespace-nowrap">{item.name}</span>
-            </NavLink>
+            </Link>
           </li>
         ))}
 

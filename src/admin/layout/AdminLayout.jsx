@@ -1,47 +1,50 @@
-// AdminLayout.jsx
-import React, { useEffect } from 'react';
-import { Outlet, useLocation, useParams } from 'react-router-dom';
-import Header from '../components/header/Header';
-import LeftSidebar from '../components/header/LeftSidebar';
-import RightSidebar from '../components/header/RightSidebar';
-import { ToastContainer } from 'react-toastify';
+"use client";
 
-const AdminLayout = () => {
-  const location = useLocation();
-  const { id, slug } = useParams(); // Get both params
+import Header from "@/src/admin/components/header/Header";
+import LeftSidebar from "@/src/admin/components/header/LeftSidebar";
+import RightSidebar from "@/src/admin/components/header/RightSidebar";
+import { ToastContainer } from "react-toastify";
+import { usePathname, useParams } from "next/navigation";
+import { useEffect } from "react";
 
-  const isLoginPage = location.pathname === '/admin/login';
-  const hasProjectId = Boolean(id);
+export default function AdminLayout({ children }) {
+  const pathname = usePathname();
+  const params = useParams(); // { id, slug } if route is /admin/[id]/[slug]
+
+  const isLoginPage = pathname === "/admin/login";
+  const hasProjectId = Boolean(params?.id);
 
   useEffect(() => {
-    document.body.className = 'admin-body';
+    document.body.className = "admin-body";
   }, []);
 
   return (
     <>
-      {!isLoginPage && <Header onLogout={() => {
-        localStorage.removeItem('adminToken');
-        window.location.href = '/admin/login';
-      }} />}
-      
+      {!isLoginPage && (
+        <Header
+          onLogout={() => {
+            localStorage.removeItem("adminToken");
+            window.location.href = "/admin/login";
+          }}
+        />
+      )}
+
       {!isLoginPage && <LeftSidebar />}
-      
-      {/* Pass slug so RightSidebar knows which tab is active */}
-      {!isLoginPage && hasProjectId && <RightSidebar projectId={id} activeSlug={slug} />}
+      {!isLoginPage && hasProjectId && (
+        <RightSidebar projectId={params.id} activeSlug={params.slug} />
+      )}
 
       <ToastContainer position="top-right" autoClose={1000} />
 
       <main
         className={
           !isLoginPage
-            ? `px-[50px] ${hasProjectId ? 'ml-[80px] mr-[80px]' : 'ml-[80px]'}`
-            : ''
+            ? `px-[50px] ${hasProjectId ? "ml-[80px] mr-[80px]" : "ml-[80px]"}`
+            : ""
         }
       >
-        <Outlet />
+        {children}
       </main>
     </>
   );
-};
-
-export default AdminLayout;
+}

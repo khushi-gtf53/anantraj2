@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import CustomTable from "./CustomTable";
 import TableHead from "./TableHead";
@@ -7,9 +8,10 @@ import TableData from "./TableData";
 import TableRow from "./TableRow";
 import { MdEdit, MdDelete } from "react-icons/md";
 import Pagination from "./Pagination";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
-import { BASE_URL } from "../../../../config";
+import { BASE_URL } from "@/config";
+import Link from "next/link";
 
 const TableContainer = ({ head, pagination, currentPage, handlePageChange, data, onDelete, onEdit }) => {
   const [modalContent, setModalContent] = useState(null); // for text/image preview
@@ -21,7 +23,7 @@ const TableContainer = ({ head, pagination, currentPage, handlePageChange, data,
     if (!text) return "";
     return text.length > length ? text.slice(0, length) + "..." : text;
   };
-
+  
   return (
     <div className="overflow-auto">
       <CustomTable>
@@ -46,6 +48,17 @@ const TableContainer = ({ head, pagination, currentPage, handlePageChange, data,
                     const headerName = head[j]?.toLowerCase();
                     const isCellImage = headerName?.includes("image") || headerName?.includes("banner") || headerName?.includes("icon");
                     const isCellText = typeof cell === "string";
+  //         const isAddSubTypologies =  headerName?.includes("add_sub_typologies"); // ✅ check for special column
+
+  // if (isAddSubTypologies) {
+  //   return (
+  //     <TableData key={`${rowIndex}-${j}`}>
+  //       <Link href={`/admin/sub-typologies/${row[row.length - 1]}`}>
+  //         Add Sub Typologies
+  //       </Link>
+  //     </TableData>
+  //   );
+  // }
 
                     return (
                       <TableData tableDataKey={`${rowIndex}-${j}`} key={`${rowIndex}-${j}`}>
@@ -77,6 +90,15 @@ const TableContainer = ({ head, pagination, currentPage, handlePageChange, data,
                       </TableData>
                     );
                   })}
+                  
+                    {head.includes("Add Sub Typologies") && (
+  <TableData>
+    <Link href={`/admin/sub-typologies/${row[row.length - 1]}`}>
+      Add Sub Typologies
+    </Link>
+  </TableData>
+)}
+
                   <TableData>
                     <div className="flex items-center justify-center gap-[10px]">
                       {onEdit ? (
@@ -87,7 +109,7 @@ const TableContainer = ({ head, pagination, currentPage, handlePageChange, data,
                           <MdEdit />
                         </button>
                       ) : (
-                        <Link to={`/admin/project/${row[row.length - 1]}`}>
+                        <Link href={`/admin/project/${row[row.length - 1]}`}>
                           <button className="text-primary text-[20px]">
                             <MdEdit />
                           </button>
