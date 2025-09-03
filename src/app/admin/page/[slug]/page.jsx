@@ -1,14 +1,15 @@
+"use client";
 import React, { useEffect, useState, useCallback } from "react";
-import { useParams } from "react-router-dom";
-import Card from "../components/card/Card";
-import CardHeading from "../components/card/CardHeading";
-import Label from "../components/form/Label";
-import TextInput from "../components/form/TextInput";
-import { toast } from "react-toastify";
-import { useApi } from "../hooks/useApi";
-import { BASE_ADMIN, BASE_URL } from "../../../config";
 import { RiPagesFill } from "react-icons/ri";
 import { FaUpload } from "react-icons/fa";
+import { useParams } from "next/navigation";
+import { useApi } from "@/src/admin/hooks/useApi";
+import { BASE_ADMIN, BASE_URL } from "@/config";
+import Card from "@/src/admin/components/card/Card";
+import CardHeading from "@/src/admin/components/card/CardHeading";
+import Label from "@/src/admin/components/form/Label";
+import TextInput from "@/src/admin/components/form/TextInput";
+import { toast } from "react-toastify";
 
 const Homepage = () => {
   const { slug } = useParams();

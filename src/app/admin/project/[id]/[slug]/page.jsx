@@ -11,8 +11,9 @@ import { useParams } from "next/navigation";
 import React from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// --- Centralized Config ---
-const sectionConfigs = {
+
+    // --- Centralized Config ---
+const staticSectionConfigs = {
   banner: {
     fields: [
       { type: "image", name: "image", label: "Banner" },
@@ -22,11 +23,13 @@ const sectionConfigs = {
     endpoint: "banner",
     label: "Banner",
   },
-  "key-highlight": {
+  highlights: {
     fields: [
       { type: "text", name: "title", label: "Title" },
+      { type: "image", name: "image", label: "Image" },
+      { type: "text", name: "alt", label: "Alt Tag" },
     ],
-    table: { head: ["Title"], header: ["title"] },
+    table: { head: ["Title","Image","Alt Tag"], header: ["title","image","alt"] },
     endpoint: "highlight",
     label: "Highlights",
   },
@@ -39,22 +42,63 @@ const sectionConfigs = {
     endpoint: "galleries",
     label: "Gallery",
   },
-  amenities: {
-    fields: [
-      { type: "text", name: "name", label: "Title" },
-      { type: "text", name: "short_description", label: "Description" },
-      { type: "image", name: "icon", label: "Icon" },
-      { type: "text", name: "alt", label: "Alt Tag" },
-    ],
-    table: { head: ["Title", "Description", "Icon", "Alt Tag"], header: ["name", "short_description", "icon", "alt"] },
-    endpoint: "amenities",
-    label: "Amenities",
-  },
 };
 
 const ProjectDetails = () => {
   const { id, slug } = useParams();
   const api = useApi(BASE_ADMIN);
+
+      
+  const { tableData: amenitiesLogo } = useCrud(api, "amenities-logo");
+  const { tableData: subTypologies } = useCrud(api, "sub-typologies");
+
+    // map to dropdown options
+  const amenitiesLogoOptions =
+    amenitiesLogo?.map((item) => ({
+      label: item.name, // check actual API response
+      value: item.id,
+    })) || [];    // map to dropdown options
+  const floorPlanOptions =
+    subTypologies?.map((item) => ({
+      label: item.sub_typologies, // check actual API response
+      value: item.id,
+    })) || [];
+
+      // Merge dynamic stuff into static configs
+  const sectionConfigs = {
+    ...staticSectionConfigs,
+    amenities: {
+      fields: [
+        { type: "dropdown", name: "icon_id", label: "Amenities Logo", options: amenitiesLogoOptions },
+        { type: "text", name: "name", label: "Title" },
+        { type: "text", name: "short_description", label: "Description" },
+        { type: "image", name: "image", label: "Icon" },
+        { type: "text", name: "alt", label: "Alt Tag" },
+      ],
+      table: {
+        head: ["Title", "Description", "Icon", "Alt Tag"],
+        header: ["name", "short_description", "image", "alt"],
+      },
+      endpoint: "amenities",
+      label: "Amenities",
+    },
+    "floor-plan": {
+      fields: [
+        { type: "dropdown", name: "sub_typologie_id", label: "Amenities Logo", options: floorPlanOptions },
+        { type: "text", name: "title", label: "Title" },
+        { type: "image", name: "image", label: "Icon" },
+        { type: "text", name: "alt", label: "Alt Tag" },
+      ],
+      table: {
+        head: ["Title",  "image", "Alt Tag"],
+        header: ["title",  "image", "alt"],
+      },
+      endpoint: "floor-plan",
+      label: "Floor Plan",
+    },
+  };
+
+
 
   // Get config for current slug
   const config = sectionConfigs[slug] || {
@@ -70,12 +114,20 @@ const ProjectDetails = () => {
 
 
   // Hook for CRUD operations
-  const { tableData, pagination,currentPage,handlePageChange } =
+  const { tableData, pagination,currentPage,handlePageChange,fetchTableData } =
     useCrud(api, isEditableSection ? `project/${id}/${config.endpoint}` : null,config.table.header || [],);
 
     const {  editData, handleAddOrUpdate, handleDelete, handleEdit} =
     useCrud(api, isEditableSection ? `project-${config.endpoint}` : null,config.table.header || [], true);
 
+const handleAddOrUpdateWithRefresh = async (formData) => {
+  await handleAddOrUpdate(formData);
+  fetchTableData(currentPage); // 👈 refresh first hook’s table
+};
+const handleDeleteWithRefresh = async (id) => {
+  await handleDelete(id);
+  fetchTableData(currentPage); // 👈 refresh
+};
 
   return (
     <section key={slug}>
@@ -100,7 +152,7 @@ const ProjectDetails = () => {
                 // if (config.endpoint?.includes("project")) {
                   formData.project_id = id;
                 // }
-                handleAddOrUpdate(formData);
+                handleAddOrUpdateWithRefresh(formData);
               }}
               defaultValues={editData}
               col={6}
@@ -113,7 +165,7 @@ const ProjectDetails = () => {
               <TableContainer
                 head={config.table.head}
                 data={tableData}
-                onDelete={handleDelete}
+                 onDelete={handleDeleteWithRefresh}
                 onEdit={handleEdit}
               pagination={pagination}
               currentPage={currentPage}

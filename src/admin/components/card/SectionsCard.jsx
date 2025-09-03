@@ -22,7 +22,7 @@ const SectionsCard = ({ title, icon,data,cms=false }) => {
                 </div>
                 <div>
                   <p className="leading-[20px] text-white text-[13px]">{item?.name}</p>
-                  <Link href={cms ? `/admin/cms/${item?.slug }`:`page/${item?.slug}`} ><p className="text-[var(--admin-secondary)] !text-[12px]">View Details</p></Link>
+                  <Link href={cms ? `/admin/cms/${item?.slug }`:`/admin/page/${item?.slug}`} ><p className="text-[var(--admin-secondary)] !text-[12px]">View Details</p></Link>
                 </div>
               </div>
             </Card>
