@@ -80,7 +80,7 @@ const CsrGallery = () => {
                 className="explore w-full flex flex-col items-center space-y-2 my-5 justify-center cursor-pointer"
                 onClick={() => setShowAll(true)}
               >
-                <SlArrowDown size={30} />
+                <SlArrowDown className="lg:text-[22px] text-[18px]" />
                 <div className="text-primaryblue uppercase font-bold">
                   explore more images
                 </div>

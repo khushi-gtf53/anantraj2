@@ -4,11 +4,11 @@ import CommonHeading from "../common/CommonHeading"
 import CommonPera from "../common/CommonPera"
 import ContentTabs from "./ContentTabs"
 
-const CsrContent = () => {
+const CsrContent = ({ contentData }) => {
     return (
         <section className="csrcontent relative bg-[#FBF6F6] w-full">
             <div className="wrapper">
-                <div className="about border-b border-black">
+                <div className="about border-b-2 border-gray-400">
                     <CommonHeading>monica sarin foundation</CommonHeading>
                     <div className="about_desc mt-5 pb-20">
                         <CommonPera extraClass="text-justify">
@@ -17,7 +17,7 @@ const CsrContent = () => {
                     </div>
                 </div>
 
-                <ContentTabs/>
+                <ContentTabs contentData={contentData} />
             </div>
         </section>
     )
