@@ -1,10 +1,11 @@
+"use client";
 import React, { useEffect, useState } from "react";
-import DynamicForm from "../../components/form/DynamicForm";
-import { useApi } from "../../hooks/useApi";
-import { BASE_ADMIN } from "../../../../config";
 import "react-toastify/dist/ReactToastify.css";
-import { useCrud } from "../../hooks/useCrud";
 import { toast } from "react-toastify";
+import { BASE_ADMIN } from "@/config";
+import { useApi } from "../../hooks/useApi";
+import { useCrud } from "../../hooks/useCrud";
+import DynamicForm from "../form/DynamicForm";
 
   const fieldConfigs = {
   "key-highlight": [
