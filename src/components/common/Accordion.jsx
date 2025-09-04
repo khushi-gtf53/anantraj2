@@ -15,7 +15,6 @@ const Accordion = ({ label, children, isOpen, onClick }) => {
         { height: 0, autoAlpha: 0 },
         {
           height: "auto",
-          padding: 10,
           autoAlpha: 1,
           duration: 0.6,
           ease: "power2.out",
@@ -37,14 +36,14 @@ const Accordion = ({ label, children, isOpen, onClick }) => {
     <div className="lg:mb-10 mb-[30px]">
       {/* Accordion Header */}
       <div
-        className="top_nav cursor-pointer py-[00px] lg:py-5 flex lg:gap-[0] gap-[15px] font-sangbleu uppercase"
+        className="top_nav cursor-pointer py-[00px] lg:py-5 flex lg:gap-[50px] gap-[15px] font-sangbleu uppercase items-center "
         onClick={onClick}
       >
-        <div className="lg:w-[25%]">
-          <h3 className="lg:text-lg text-[14px] tracking-wider">{label}</h3>
+        <div className="">
+          <h3 className="lg:text-[20px] text-[14px] tracking-wider capitalize ">{label}</h3>
         </div>
-        <div className="w-[65%] h-[1px] bg-black mt-[10px]" />
-        <div className="w-[10%] flex justify-center lg:mb-0 mb-[20px]">
+        <div className="flex-1 h-[1px] bg-black" />
+        <div className="flex justify-center lg:mb-0 mb-[20px]">
           {isOpen ? (
             <SlArrowUp className="lg:text-[30px] text-[20px]" />
           ) : (
@@ -57,7 +56,7 @@ const Accordion = ({ label, children, isOpen, onClick }) => {
       <div
         ref={contentRef}
         style={{ overflow: "hidden", height: 0, opacity: 0 }}
-        className="highlights_section w-full lg:pt-10 relative"
+        className="highlights_section w-full lg:mt-8 relative p-0"
       >
         {children}
       </div>
