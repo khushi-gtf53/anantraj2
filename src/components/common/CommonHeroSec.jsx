@@ -141,7 +141,7 @@ const CommonHeroSec = ({ ObjData }) => {
       </div>
 
       {/* Background image */}
-      <img src={imgUrl} alt="aboutus" />
+      <img src={imgUrl} alt="aboutus" className="w-full" />
     </section>
   );
 };

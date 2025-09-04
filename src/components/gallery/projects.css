@@ -1,0 +1,27 @@
+.projectImg{
+  overflow: hidden;
+
+}
+
+.projectImg img{
+  transition:0.2s ease-in-out
+}
+
+.projectImg:before{
+  position:absolute;
+  content:'';
+  height:100%;
+  width:100%;
+  background: rgb(0 0 0 / 20%);
+  z-index: 1;
+  opacity:0;
+  transition:0.2s ease-in-out
+}
+
+.projectImg:hover img{
+  transform:scale(1.05);
+}
+
+.projectImg:hover:before{
+  opacity:1;
+}
