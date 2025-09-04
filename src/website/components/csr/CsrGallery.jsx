@@ -5,6 +5,7 @@ import { SlArrowDown } from "react-icons/sl";
 import CommonHeading from "../common/CommonHeading";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import Image from "next/image";
 
 const basepath = "/assets/csr/gallery";
 
@@ -53,40 +54,36 @@ const CsrGallery = () => {
 
   return (
     <>
-      <section className="csr_gallery relative bg-[#FBF6F6] w-full">
-        <div className="wrapper">
-          <CommonHeading>a glimpse of our initiatives</CommonHeading>
+      <section className="csr_gallery relative bg-[#FBF6F6] w-full lg:pt-18">
+        <CommonHeading>a glimpse of our initiatives</CommonHeading>
 
-          <div className="gallery pt-20">
-            <div className="grid grid-cols-3 gap-5">
-              {imagesToShow.map((gallery, i) => (
-                <div key={i} className="galleryImg">
-                  <img
-                    src={`${basepath}/${gallery.img}`}
-                    alt={gallery.alt}
-                    className="w-full h-auto cursor-pointer"
-                    onClick={() => {
-                      // open Lightbox at clicked index
-                      setOpenIndex(i);
-                      setLightboxOpen(true);
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-
-            {!showAll && (
-              <div
-                className="explore w-full flex flex-col items-center space-y-2 my-5 justify-center cursor-pointer"
-                onClick={() => setShowAll(true)}
-              >
-                <SlArrowDown className="lg:text-[22px] text-[18px]" />
-                <div className="text-primaryblue uppercase font-bold">
-                  explore more images
-                </div>
+        <div className="gallery lg:pt-20 pt-5">
+          <div className="grid lg:grid-cols-3 grid-cols-2 gap-5">
+            {imagesToShow.map((gallery, i) => (
+              <div key={i} className="galleryImg">
+                <Image
+                  src={`${basepath}/${gallery.img}`}
+                  alt={gallery.alt || `Gallery image ${i + 1}`}
+                  layout="responsive"
+                  width={600}
+                  height={400}
+                  className="object-cover"
+                />
               </div>
-            )}
+            ))}
           </div>
+
+          {!showAll && (
+            <div
+              className="explore w-full flex flex-col items-center space-y-2 lg:pt-12 pt-7 justify-center cursor-pointer"
+              onClick={() => setShowAll(true)}
+            >
+              <SlArrowDown className="lg:text-[20px] text-[18px]" />
+              <div className="text-primaryblue uppercase font-bold">
+                explore more images
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
