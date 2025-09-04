@@ -14,7 +14,7 @@ const GalleryAbout = () => {
         tabs: [
             { tabname: "All Projects", tablink: "allprojects" },
             { tabname: "Under Construction", tablink: "underconstruction" },
-            { tabname: "Event", tablink: "event" },
+            { tabname: "Event", tablink: "award-event" },
         ]
     }
     return (
