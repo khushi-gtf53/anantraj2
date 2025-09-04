@@ -25,17 +25,17 @@ const Footer = () => {
         { label: "Residential", href: "/residential" },
         { label: "Commercial", href: "/commercial" },
         // { label: "EMI Calculator", href: "/emi-calculator", expand: true },
-        { label: "CSR", href: "/csr" , expand : true},
-        { label: "Gallery", href: "/gallery", expand : true },
+        { label: "CSR", href: "/csr", expand: true },
+        { label: "Gallery", href: "/gallery", expand: true },
         // { label: "Testimonials", href: "/testimonials", expand: true },
       ],
     },
     {
       title: "Projects",
       links: [
-        { label: "Blogs", href: "/blogs" }, 
-        { label: "Contact Us", href: "/contact" }, 
-        { label: "Career", href: "/career", expand: true }, 
+        { label: "Blogs", href: "/blogs" },
+        { label: "Contact Us", href: "/contact" },
+        { label: "Career", href: "/career", expand: true },
         // { label: "Property Investment", href: "/property-investment", expand: true } 
       ],
     },
@@ -53,16 +53,20 @@ const Footer = () => {
 
   return (
     <footer>
+
+      <div
+        className="pattern-div py-16"
+        style={{ background: "#FBF6F6 url(assets/pattern-bg.png) center", }}></div>
+
       {/* Explore Section */}
-      <div className="px-5 lg:px-24 pb-16">
-        <div className="flex flex-wrap justify-between items-center border-b border-black">
-          <div className="basis-[40%] lg:basis-[80%]"></div>
+      <div className="px-5 lg:px-24 pb-16 lg:pt-14 pt-8">
+
+        <div className="flex flex-wrap justify-between items-center">
+          <div className="basis-[40%] lg:basis-[80%] border-b-[1px] border-solid border-black"></div>
           <button
-            aria-expanded={isExploreOpen}
             onClick={toggleExplore}
-            className="uppercase cursor-pointer basis-[60%] lg:basis-[20%] justify-end tracking-[1px] text-sm lg:text-base flex items-center"
-          >
-            Explore More Links
+            aria-expanded={isExploreOpen}
+            className="uppercase cursor-pointer basis-[60%] lg:basis-[20%] justify-end tracking-[1px] text-[13px] lg:text-[14px] flex items-center">Explore More Links
             <Image
               src="/assets/down-arrow.png"
               width={18}
@@ -73,6 +77,7 @@ const Footer = () => {
             />
           </button>
         </div>
+
 
         {/* Links */}
         <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-8 text-sm lg:text-base">

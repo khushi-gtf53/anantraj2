@@ -3,7 +3,7 @@ import Blog from '@/src/components/blog/blog';
 
 export default function blog() {
   return (
-    <div className='blog__page bg-[#FBF6F6] mb-14'>
+    <div className='blog__page bg-[#FBF6F6]'>
       <Blog />
     </div>
   )

@@ -57,7 +57,7 @@ const careerSlidesData = [
 
 export default function Career() {
     return (
-        <div className='career bg-[#FBF6F6] mb-8'>
+        <div className='career bg-[#FBF6F6]'>
             <CommonHeroSec ObjData={Obj} />
             <div className='wrapper' id='work-culture'>
                 <>
