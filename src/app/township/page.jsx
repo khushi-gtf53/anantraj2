@@ -12,7 +12,7 @@ const Township = ()=>{
       <TownshipHero />
       <TownshipOverview />
       <TownshipExperience />
-      <TownshipProjects />
+      {/* <TownshipProjects /> */}
       <TownshipAmenities />
       <TownshipLocationmap />
     </>
