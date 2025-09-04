@@ -23,6 +23,8 @@ const TableContainer = ({ head, pagination, currentPage, handlePageChange, data,
     if (!text) return "";
     return text.length > length ? text.slice(0, length) + "..." : text;
   };
+
+
   
   return (
     <div className="overflow-auto">
