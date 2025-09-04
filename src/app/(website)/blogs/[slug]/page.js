@@ -1,5 +1,7 @@
+// import BlogContent from '@/src/website/components/blog/blogDetail/blogContent';
+// import CommonHeroSec from '@/src/components/common/CommonHeroSec'
 import BlogContent from '@/src/website/components/blog/blogDetail/blogContent';
-import CommonHeroSec from '@/src/components/common/CommonHeroSec'
+import CommonHeroSec from '@/src/website/components/common/CommonHeroSec';
 import React from 'react'
 
 const Obj = {
@@ -18,7 +20,7 @@ const Obj = {
 export default async function BlogDetail({ params }) {
     const slug = params;
     return (
-        <div className='blog__page bg-[#FBF6F6] mb-14'>
+        <div className='blog__page bg-[#FBF6F6]'>
             <CommonHeroSec ObjData={Obj} />
             <BlogContent />
         </div>
