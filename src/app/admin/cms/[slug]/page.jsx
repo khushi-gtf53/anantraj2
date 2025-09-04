@@ -189,10 +189,10 @@ const CmsSections = () => {
   
       // const {tableData : MetaFields}=useCrud(api,"distinct-pages");
         // 👇 Only call distinct-pages API when slug === "meta"
-  const { tableData: MetaFields } =
-    slug === "our-team" ? useCrud(api, "team-category") : { tableData: [] };
+  const { tableData: MetaFields } = slug === "our-team" ? useCrud(api, "team-category") : { tableData: [] };
       
 
+  console.log(editData,"editData");
 
 useEffect(() => {
   if (slug === "our-team") {
