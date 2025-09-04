@@ -5,12 +5,16 @@ import CommonHeading from "../common/CommonHeading";
 import Accordion from "../common/Accordion";
 import Link from "next/link";
 import Image from "next/image";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import './projects.css'
 
 const Projects = ({ tabs = [] }) => {
   const [activeTab, setActiveTab] = useState(tabs[0]?.key || "");
   const [activeSubTab, setActiveSubTab] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [index, setIndex] = useState(-1);
+  const [lightboxImages, setLightboxImages] = useState([]);
   const imagesPerPage = 6;
 
   // 🔹 Reset sub-tab when tab changes
@@ -29,19 +33,27 @@ const Projects = ({ tabs = [] }) => {
   const renderProject = useMemo(() => {
     const activeTabObj = tabs.find((t) => t.key === activeTab);
     if (!activeTabObj) return null;
+    console.log('activeTabObj',activeTabObj);
 
-    const subTabs = Object.keys(activeTabObj.projects || {});
+    const subTabs = Object.entries(activeTabObj.projects || {}).filter(([key, value])=>value.length > 0).map();
+    console.log('subTabs',subTabs);
     const subGallery = activeTabObj.projects[activeSubTab] || [];
 
     const totalPages = Math.ceil(subGallery.length / imagesPerPage);
     const startIndex = (currentPage - 1) * imagesPerPage;
     const visibleImages = subGallery.slice(startIndex, startIndex + imagesPerPage);
 
+    const lightboxImage = visibleImages?.map(image=>({
+      src:image
+    }))
+
+    setLightboxImages(lightboxImage)
+
     return (
       <div>
         {/* Sub-tabs */}
         {subTabs.length > 0 && (
-          <div className="tabs flex gap-10 text-xl mb-5">
+          <div className="tabs flex gap-15 text-xl mb-10">
             {subTabs.map((sub) => (
               <button
                 key={sub}
@@ -49,7 +61,7 @@ const Projects = ({ tabs = [] }) => {
                   setActiveSubTab(sub);
                   setCurrentPage(1);
                 }}
-                className={`cursor-pointer ${
+                className={`cursor-pointer text-[18px] tracking-[1px] ${
                   activeSubTab === sub
                     ? "font-bold text-primaryblue"
                     : "text-gray-400"
@@ -64,7 +76,7 @@ const Projects = ({ tabs = [] }) => {
         {/* Images */}
         <div className="grid grid-cols-3 gap-5">
           {visibleImages.map((src, i) => (
-            <div key={i} className="projectImg relative w-full h-64">
+            <div key={i} className="projectImg cursor-pointer relative w-full h-64"  onClick={()=>setIndex(i)}>
               <Image
                 src={src}
                 alt={`project-${i}`}
@@ -113,28 +125,38 @@ const Projects = ({ tabs = [] }) => {
   }, [activeTab, activeSubTab, currentPage, tabs]);
 
   return (
-    <section className="projects">
-      <div className="platter_projects relative w-full wrapper bg-[#FBF6F6]">
-        <div className="mb-10">
-          <CommonHeading>
-            an unforgettable once - in - a - lifetime experience
-          </CommonHeading>
-        </div>
+    <>
+      <section className="projects">
+        <div className="platter_projects relative w-full wrapper bg-[#FBF6F6]">
+          <div className="mb-10">
+            <CommonHeading>
+              an unforgettable once - in - a - lifetime experience
+            </CommonHeading>
+          </div>
 
-        {tabs.map((tab) => (
-          <Accordion
-            key={tab.key}
-            label={tab.label}
-            isOpen={activeTab === tab.key}
-            onClick={() =>
-              setActiveTab(activeTab === tab.key ? "" : tab.key)
-            }
-          >
-            <div id={tab.key}>{renderProject}</div>
-          </Accordion>
-        ))}
-      </div>
-    </section>
+          {tabs.map((tab) => (
+            <Accordion
+              key={tab.key}
+              label={tab.label}
+              isOpen={activeTab === tab.key}
+              onClick={() =>
+                setActiveTab(activeTab === tab.key ? "" : tab.key)
+              }
+            >
+              <div id={tab.key} className=" md:mb-10">{renderProject}</div>
+            </Accordion>
+          ))}
+        </div>
+      </section>
+
+
+      <Lightbox
+        index={index}
+        open={index>=0}
+        slides={lightboxImages}
+        close={()=>setIndex(-1)}
+      />
+    </>
   );
 };
 

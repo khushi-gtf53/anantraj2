@@ -14,7 +14,10 @@ const Header = () => {
   const [isAboutUs, setIsAboutUs] = useState(false);
   const pathname = usePathname();
 
+  const isTownshipPage = pathname.includes('township');
 
+  console.log('isTownshipPage',isTownshipPage);
+  
 
   useEffect(() => {
     setIsMounted(true);
@@ -59,19 +62,19 @@ const Header = () => {
   const headerContent = (
     <header
       className={`w-full transition-all duration-300 ease-in-out ${showHeader
-        ? "fixed top-0 z-[100] translate-y-0"
-        : "fixed top-0 z-[100] -translate-y-full"
+          ? "fixed top-0 z-[100] translate-y-0"
+          : "fixed top-0 z-[100] -translate-y-full"
         } flex justify-between items-center px-[20px] lg:px-[100px] py-3 ${isAboutUs || (!isAtTop && showHeader)
           ? "bg-[#FBF6F6] text-black"
           : isAtTop && showHeader
             ? "bg-transparent text-white"
             : "bg-white text-black shadow-md"
-        }`}
+        } ${isTownshipPage ? 'bg-transparent text-white' : ''}`}
     >
       <Link href="/">
         <img
           src={
-            isAboutUs || !isAtTop || !showHeader
+            (isAboutUs || !isAtTop || !showHeader) && !isTownshipPage
               ? "/assets/footer-logo-1.png"
               : "/assets/white-anant.png"
           }
@@ -91,7 +94,7 @@ const Header = () => {
                 : isAtTop && showHeader
                   ? "text-white"
                   : "text-black"
-                }`}
+                } ${isTownshipPage ? "text-white" : "text-black"}`}
             >
               {item}
             </Link>
