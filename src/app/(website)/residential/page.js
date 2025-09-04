@@ -8,14 +8,12 @@ const page = () => {
       label: "All New Launch Projects",
       projects: [
         {
-          name: "The Estate Residences",
-          location: "Sector 63A, Gurgaon",
+          name: "Estate Apartments",
+          location: "Sector 63A, Gurugram",
           typology: "4 BHK Luxury Apartments",
           status: "New Launch",
           link: "#",
-          slides: [
-            "/assets/platter/residential/newlaunch/8.webp",
-          ],
+          image: "/assets/platter/residential/newlaunch/8.webp",
         },
       ],
     },
@@ -24,14 +22,12 @@ const page = () => {
       label: "Under Construction",
       projects: [
         {
-          name: "The Estate Residences",
-          location: "Sector 63A, Gurgaon",
+          name: "The Estate Residencies",
+          location: "Sector 63A, Gurugram",
           typology: "4 BHK Luxury Apartments",
-          status: "New Launch",
+          status: "Under Construction",
           link: "#",
-          slides: [
-            "/assets/platter/residential/under_construction/1.webp",
-          ],
+          image: "/assets/platter/residential/under_construction/1.webp",
         },
       ],
     },
@@ -40,28 +36,39 @@ const page = () => {
       label: "Completed",
       projects: [
         {
-          name: "The Estate Residences",
-          location: "Sector 63A, Gurgaon",
+          name: "Ashok Estate - Tower A",
+          location: "Sector 63A, Gurugram",
           typology: "4 BHK Luxury Apartments",
-          status: "New Launch",
+          status: "Completed",
           link: "#",
-          slides: [
-            "/assets/platter/residential/completed/1.webp",
-            "/assets/platter/residential/completed/2.webp",
-            "/assets/platter/residential/completed/3.webp",
-            "/assets/platter/residential/completed/4.webp",
-            "/assets/platter/residential/completed/5.webp",
-          ],
+          image: "/assets/platter/residential/completed/1.webp",
+        },
+        {
+          name: "Ashok Estate - Tower B",
+          location: "Sector 63A, Gurugram",
+          typology: "4 BHK Luxury Apartments",
+          status: "Completed",
+          link: "#",
+          image: "/assets/platter/residential/completed/2.webp",
+        },
+        {
+          name: "Ashok Estate - Tower C",
+          location: "Sector 63A, Gurugram",
+          typology: "4 BHK Luxury Apartments",
+          status: "Completed",
+          link: "#",
+          image: "/assets/platter/residential/completed/3.webp",
         },
       ],
     },
   ];
+
   return (
     <>
       <PlatterAbout />
       <PlatterProjects tabs={projectTabs} />
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;

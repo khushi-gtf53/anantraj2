@@ -1,0 +1,53 @@
+.township_hero_section{
+  position:relative;
+  height:100vh;
+}
+
+.township_hero_section .container{
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.township_hero_section .bg_image{
+  position:absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+  height: 100%;
+}
+
+.township_hero_section .contents{
+  display: block;
+  position: relative;
+  padding-top: 150px;
+  padding-bottom: 50px;
+  height: 100%;
+}
+
+.township_hero_section .contents:before{
+  content: "";
+  background-image: linear-gradient(182deg, #00000000, #000);
+  width: 100%;
+  height: 400px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.line_up{
+  position:relative;
+}
+
+.line_up:before{
+  position:absolute;
+  content:'';
+  height:30px;
+  width:1px;
+  background:#fff;
+  bottom:calc(100% + 5px);
+  left:50%
+}

@@ -1,6 +1,4 @@
-import CsrAbout from "@/src/website/components/csr/CsrAbout";
-import CsrContent from "@/src/website/components/csr/CsrContent";
-import CsrGallery from "@/src/website/components/csr/CsrGallery";
+import Csr from "@/src/components/csr/csr";
 
 export const metadata = {
   title: "Corporate Social Responsibility | Anant Raj",
@@ -22,7 +20,7 @@ export const metadata = {
     siteName: "Anant Raj",
     images: [
       {
-        url: "/assets/csr/about.webp", 
+        url: "/assets/csr/about.webp",
         width: 1200,
         height: 630,
         alt: "Corporate Social Responsibility at Anant Raj",
@@ -36,7 +34,7 @@ export const metadata = {
     title: "Corporate Social Responsibility | Anant Raj",
     description:
       "See how Anant Raj is making a difference with CSR initiatives worldwide.",
-    images: ["https://yourdomain.com/images/csr-og.jpg"], 
+    images: ["https://yourdomain.com/images/csr-og.jpg"],
   },
   alternates: {
     canonical: "https://yourdomain.com/csr",
@@ -46,9 +44,7 @@ export const metadata = {
 const page = () => {
   return (
     <>
-      <CsrAbout />
-      <CsrContent />
-      <CsrGallery />
+      <Csr />
     </>
   );
 };

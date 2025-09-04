@@ -7,7 +7,10 @@ const CsrAbout = () => {
     const Obj = {
         title: "CSR",
         heading: "CSR",
-        subtitle: <p>Monica Sarin Foundation has been instrumental in carrying out our organization's CSR initiatives to help create an impact in our society.</p>,
+        subtitle: <>
+            Monica Sarin Foundation has been instrumental in carrying out our organization's
+            CSR initiatives to help create an impact in our society.
+        </>,
         imgUrl: "/assets/csr/about.webp",
         linkTo: "discover",
         tabs: [

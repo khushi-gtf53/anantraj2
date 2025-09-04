@@ -120,7 +120,7 @@ const CommonHeroSec = ({ ObjData }) => {
           <h1 className="text-3xl sm:text-6xl mb-3 sm:mb-0 font-light text-primaryblue font-sangbleu">
             {heading}
           </h1>
-          <p className="font-lato text-[14px] text-justify font-[400] tracking-[1px] leading-[27px] max-w-[45%]">
+          <p className="font-lato text-[14px] text-justify font-[400] tracking-[1px] leading-[27px] lg:max-w-[45%]">
             {subtitle}
           </p>
         </div>
@@ -141,7 +141,7 @@ const CommonHeroSec = ({ ObjData }) => {
       </div>
 
       {/* Background image */}
-      <img src={imgUrl} alt="aboutus" />
+      <img src={imgUrl} alt="aboutus" className="w-full" />
     </section>
   );
 };

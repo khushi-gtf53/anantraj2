@@ -10,41 +10,44 @@ const Header = () => {
   const [isAtTop, setIsAtTop] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false); 
+  const [isMounted, setIsMounted] = useState(false);
+  const [isAboutUs, setIsAboutUs] = useState(false);
   const pathname = usePathname();
 
+  const isTownshipPage = pathname.includes('township');
+
+  console.log('isTownshipPage',isTownshipPage);
+  
+
   useEffect(() => {
-    setIsMounted(true); 
+    setIsMounted(true);
   }, []);
 
   useEffect(() => {
-    if (!isMounted) return;
+    if (typeof window === "undefined") return;
 
-    const isAboutUsPage =
-      pathname.includes("aboutus") ||
-      pathname.includes("contactus") ||
-      pathname.includes("projects") ||
-      pathname.includes("investors") ||
-      pathname.includes("residential") ||
-      pathname.includes("blogs") ||
-      pathname.includes("estate-residences") ||
-      pathname.includes("csr");
+    // Set true if NOT on home page ("/")
+    const isNonHomePage = pathname !== "/";
+
+    setIsAboutUs(isNonHomePage);
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+
       setIsAtTop(currentScrollY <= 10);
 
       if (currentScrollY > lastScrollY && currentScrollY > 10) {
         setShowHeader(false);
-      } else {
+      } else if (currentScrollY < lastScrollY || currentScrollY <= 10) {
         setShowHeader(true);
       }
+
       setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMounted, pathname, lastScrollY]);
+  }, [lastScrollY, pathname]);
 
   if (!isMounted) {
     // render nothing or a simple placeholder until client mounts
@@ -58,22 +61,20 @@ const Header = () => {
 
   const headerContent = (
     <header
-      className={`w-full transition-all duration-300 ease-in-out ${
-        showHeader
+      className={`w-full transition-all duration-300 ease-in-out ${showHeader
           ? "fixed top-0 z-[100] translate-y-0"
           : "fixed top-0 z-[100] -translate-y-full"
-      } flex justify-between items-center px-[20px] lg:px-[100px] py-3 ${
-        pathname.includes("aboutus") || (!isAtTop && showHeader)
+        } flex justify-between items-center px-[20px] lg:px-[100px] py-3 ${isAboutUs || (!isAtTop && showHeader)
           ? "bg-[#FBF6F6] text-black"
           : isAtTop && showHeader
-          ? "bg-transparent text-white"
-          : "bg-white text-black shadow-md"
-      }`}
+            ? "bg-transparent text-white"
+            : "bg-white text-black shadow-md"
+        } ${isTownshipPage ? 'bg-transparent text-white' : ''}`}
     >
       <Link href="/">
         <img
           src={
-            pathname.includes("aboutus") || !isAtTop || !showHeader
+            (isAboutUs || !isAtTop || !showHeader) && !isTownshipPage
               ? "/assets/footer-logo-1.png"
               : "/assets/white-anant.png"
           }
@@ -88,31 +89,29 @@ const Header = () => {
             <Link
               key={item}
               href={`/${item.toLowerCase().replace(/\s+/g, "")}`}
-              className={` lg:block hidden tracking-[1.2px] font-[400] text-[15px] ${
-                pathname.includes("aboutus") || (!isAtTop && showHeader)
-                  ? "text-black"
-                  : isAtTop && showHeader
+              className={` lg:block hidden tracking-[1.2px] font-[400] text-[15px] ${isAboutUs || (!isAtTop && showHeader)
+                ? "text-black"
+                : isAtTop && showHeader
                   ? "text-white"
                   : "text-black"
-              }`}
+                } ${isTownshipPage ? "text-white" : "text-black"}`}
             >
               {item}
             </Link>
           )
         )}
         <button
-          className={`relative w-6 h-6 ${
-            pathname.includes("aboutus") || (!isAtTop && showHeader)
-              ? "text-black"
-              : isAtTop && showHeader
+          className={`relative w-6 h-6 ${isAboutUs || (!isAtTop && showHeader)
+            ? "text-black"
+            : isAtTop && showHeader
               ? "text-white"
               : "text-black"
-          }`}
+            }`}
           onClick={() => setMenuOpen(true)}
         >
           <img
             src={
-              pathname.includes("aboutus") || !isAtTop || !showHeader
+              isAboutUs || !isAtTop || !showHeader
                 ? "/assets/black-hamburger.png"
                 : "/assets/hamburger.png"
             }
