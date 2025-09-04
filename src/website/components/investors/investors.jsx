@@ -1,9 +1,11 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
-import ReportsSection from './ReportsSection'
-import CommonHeroSec from '../common/CommonHeroSec';
+// import ReportsSection from './ReportsSection'
+// import CommonHeroSec from '../common/CommonHeroSec';
 import { gsap } from "gsap";
+import CommonHeroSec from '@/src/website/components/common/CommonHeroSec';
+import ReportsSection from './ReportsSection';
 
 
 const Obj = {

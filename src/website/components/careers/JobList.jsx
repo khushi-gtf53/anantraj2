@@ -1,8 +1,10 @@
 'use client'
 
+import CommonHeading from '@/src/website/components/common/CommonHeading';
+import Pagination from '@/src/website/components/common/Pagination';
 import React, { useState } from 'react'
-import CommonHeading from '../../components/common/CommonHeading'
-import Pagination from '../common/Pagination';
+// import CommonHeading from '../../components/common/CommonHeading'
+// import Pagination from '../common/Pagination';
 
 const jobs = [
   {

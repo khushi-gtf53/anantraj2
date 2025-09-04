@@ -1,6 +1,6 @@
-import MediaCenterAbout from "@/src/components/mediacenter/MediaCenterAbout";
-import OnlineNews from "@/src/components/mediacenter/OnlineNews";
-import PressKit from "@/src/components/mediacenter/PressKit";
+import MediaCenterAbout from "@/src/website/components/mediacenter/MediaCenterAbout";
+import OnlineNews from "@/src/website/components/mediacenter/OnlineNews";
+import PressKit from "@/src/website/components/mediacenter/PressKit";
 import Image from "next/image";
 
 export default function Page() {

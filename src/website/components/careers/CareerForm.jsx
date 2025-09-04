@@ -1,7 +1,7 @@
 'use client'
 
+import CommonHeading from '@/src/website/components/common/CommonHeading'
 import React from 'react'
-import CommonHeading from '../common/CommonHeading'
 
 export default function CareerForm() {
 

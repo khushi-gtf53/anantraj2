@@ -1,5 +1,5 @@
-import GalleryAbout from '@/src/components/gallery/GalleryAbout'
-import Projects from '@/src/components/gallery/Projects'
+import GalleryAbout from '@/src/website/components/gallery/GalleryAbout'
+import Projects from '@/src/website/components/gallery/Projects'
 import Image from 'next/image';
 import React from 'react'
 

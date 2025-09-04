@@ -1,4 +1,4 @@
-import BlogContent from '@/src/components/blog/blogDetail/blogContent';
+import BlogContent from '@/src/website/components/blog/blogDetail/blogContent';
 import CommonHeroSec from '@/src/components/common/CommonHeroSec'
 import React from 'react'
 

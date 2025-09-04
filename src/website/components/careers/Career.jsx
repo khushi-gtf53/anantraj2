@@ -7,11 +7,16 @@ import { Navigation, Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 import "swiper/css/navigation";
-
+import CommonHeroSec from '@/src/website/components/common/CommonHeroSec';
+// import CommonHeading from '@/src/website/components/common/CommonHeading';
 import JobList from './JobList';
-import CommonHeroSec from '../common/CommonHeroSec';
-import CommonHeading from '../common/CommonHeading';
 import CareerForm from './CareerForm';
+import CommonHeading from '@/src/website/components/common/CommonHeading';
+
+// import JobList from './JobList';
+// import CommonHeroSec from '../common/CommonHeroSec';
+// import CommonHeading from '../common/CommonHeading';
+// import CareerForm from './CareerForm';
 
 const Obj = {
     title: "Career",
