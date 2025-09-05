@@ -3,9 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
   const [isExploreOpen, setIsExploreOpen] = useState(false);
+  const currentPathname = usePathname();
 
   const toggleExplore = () => setIsExploreOpen((prev) => !prev);
 
@@ -51,9 +53,11 @@ const Footer = () => {
     },
   ];
 
+  if(currentPathname.includes('township')) return;
+
   return (
     <footer>
-
+      
       <div
         className="pattern-div py-16"
         style={{ background: "#FBF6F6 url(assets/pattern-bg.png) center", }}></div>
