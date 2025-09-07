@@ -5,7 +5,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 
-const Footer = () => {
+const Footer = ({showFooter}) => {
   const [isExploreOpen, setIsExploreOpen] = useState(false);
   const currentPathname = usePathname();
 
@@ -53,7 +53,7 @@ const Footer = () => {
     },
   ];
 
-  if(currentPathname.includes('township')) return;
+  if(currentPathname.includes('township') && !showFooter) return;
 
   return (
     <footer>

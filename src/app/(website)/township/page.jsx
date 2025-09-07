@@ -6,6 +6,7 @@ import TownshipOverview from "@/src/website/components/township/overview/Overvie
 import TownshipProjects from "@/src/website/components/township/projects/Projects";
 import TownshipAmenities from "@/src/website/components/township/amenities/Amenities";
 import TownshipLocationmap from "@/src/website/components/township/location-map/LocationMap";
+import Footer from "@/src/website/components/common/Footer";
 
 const Township = () => {
   // Refs to the wrapper and content divs
@@ -50,9 +51,10 @@ const Township = () => {
         <TownshipHero />
         <TownshipOverview />
         <TownshipExperience />
-        <TownshipProjects />
+        {/* <TownshipProjects /> */}
         <TownshipAmenities />
         <TownshipLocationmap />
+        <Footer showFooter={true} />
       </div>
     </div>
   );

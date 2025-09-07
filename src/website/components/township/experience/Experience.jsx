@@ -16,55 +16,54 @@ const images = [
 const TownshipExperience = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-
-    // Select all project sections
-    const projectSections = document.querySelectorAll('.project_sec');
+  
     const imageSection = document.querySelector(".images");
-
-    const imageHeight = 10; // Initial height of the image in percentage (50vh)
-    const targetHeight = 100; // Target height we want to reach in percentage (100vh)
-
-    // gsap.to(".images", {
-    //   scrollTrigger:{
-    //     trigger:".images",
-    //     start:"top top",
-    //     end:'bottom top',
-    //     pin:true,
-
-    //   }
-    // })
-
-    const heightDifference = targetHeight - imageHeight; // Height needs to increase from 50vh to 100vh
-    const endValue = heightDifference * 50; // 20 is a multiplier to control scroll speed (adjust this as necessary)
-
-    // Animate the width of the center image on scroll
-    gsap.to(".image_col:nth-child(3)", {
+    const projectSections = gsap.utils.toArray(".project_sec");
+  
+    if (!imageSection || projectSections.length === 0) return;
+  
+    // ---- Center image grow animation (same as before) ----
+    const imageHeight = 10;
+    const targetHeight = 100;
+    const heightDifference = targetHeight - imageHeight;
+    const endValue = heightDifference * 50; // aapka multiplier
+  
+    // IMPORTANT: image ko itne lambe time tak pin rakho ki saare projects stack ho saken
+    const extraForProjects = window.innerHeight * projectSections.length + 200; // +buffer
+    const imagePin = gsap.to(".image_col:nth-child(3)", {
       scrollTrigger: {
         trigger: imageSection,
-        start: "top top", // When the section top reaches the center of the viewport
-        end: `+=${endValue + window.innerHeight}`, // When the section bottom reaches the top
+        start: "top top",
+        end: `+=${endValue + window.innerHeight + extraForProjects}`, // 🔴 yahi trick
         pin: true,
         scrub: 1,
         markers: false,
+        anticipatePin: 1,
       },
       width: "100vw",
       height: "100vh",
       filter: "brightness(0.5)",
       ease: "none",
     });
-
-    projectSections.forEach((section, index) => {
-      gsap.to(section, {
-        scrollTrigger: {
-          trigger: section,
-          start: 'top top', // When the top of the section hits the top of the viewport
-          end: 'bottom top', // When the bottom of the section reaches the top of the viewport
-          scrub: 1, // Smooth scroll effect
-          pin: true, // Pin the section during the scroll
-          pinSpacing: false, // Prevent extra space after pinning
-        },
+  
+    // ---- Project sections ko one-by-one stack pin ----
+    projectSections.forEach((section) => {
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: `+=${window.innerHeight}`, // har section ~1 viewport ke liye pin
+        pin: true,
+        pinSpacing: false, // stack effect
+        anticipatePin: 1,
+        // markers: true,
       });
     });
+  
+    // Cleanup
+    return () => {
+      imagePin?.scrollTrigger?.kill();
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
   }, []);
 
   return (
