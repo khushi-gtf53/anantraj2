@@ -17,7 +17,7 @@ const downloadItems = [
   {
     id: "white-logo",
     title: "download white logo",
-    bg: "bg-primaryblue",
+    bg: "bg-[#3967AE]",
     textColor: "text-white",
     img: "/assets/mediacenter/presskit/2.webp",
     files: [
@@ -44,21 +44,19 @@ const downloadItems = [
 const PressKitItem = ({ title, bg, textColor, img, files }) => (
   <div className="presskit-item">
     <div
-      className={`${bg} w-full h-[300px] flex flex-col justify-evenly items-center p-10`}
-    >
-      <Image
+      className={`${bg} w-full lg:h-[400px] overflow-hidden flex flex-col justify-evenly items-center p-10`}
+    ><Image
         src={img}
         alt={title || "presskit item"}
         width={200}
-        height={250}
-        className="object-contain"
+        height={200}
+        layout="responsive"
+        className="lg:p-8 p-4 object-contain"
       />
       {title && (
         <h3
           className={`tracking-wider font-sangbleu text-xl capitalize ${textColor}`}
-        >
-          {title}
-        </h3>
+        >{title}</h3>
       )}
     </div>
 
@@ -69,11 +67,10 @@ const PressKitItem = ({ title, bg, textColor, img, files }) => (
             <a
               href={file.path}
               download
-              className={`tracking-wider ${
-                file.label === "Download Brochure"
-                  ? "font-sangbleu text-xl capitalize"
-                  : "uppercase"
-              }`}
+              className={`tracking-wider ${file.label === "Download Brochure"
+                ? "font-sangbleu text-xl capitalize"
+                : "uppercase"
+                }`}
             >
               {file.label}
             </a>
@@ -87,14 +84,12 @@ const PressKitItem = ({ title, bg, textColor, img, files }) => (
 
 const PressKit = () => {
   return (
-    <section id="presskit" className="presskit relative w-full">
-      <div className="wrapper">
-        <CommonHeading>press kit</CommonHeading>
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
-          {downloadItems.map((item) => (
-            <PressKitItem key={item.id} {...item} />
-          ))}
-        </div>
+    <section id="presskit" className="presskit relative w-full lg:pt-18">
+      <CommonHeading>press kit</CommonHeading>
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:gap-20 gap-8 lg:mt-14 mt-8">
+        {downloadItems.map((item) => (
+          <PressKitItem key={item.id} {...item} />
+        ))}
       </div>
     </section>
   );

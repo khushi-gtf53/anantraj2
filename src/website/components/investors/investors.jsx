@@ -139,6 +139,7 @@ export default function Investors() {
                 setOpenModal={setOpenModal}
                 activeReport={activeReport}
                 setActiveReport={setActiveReport}
+                openAccordion={openAccordion}
                 setOpenAccordion={setOpenAccordion}
                 toggleAccordion={toggleAccordion}
                 contentRefs={contentRefs}

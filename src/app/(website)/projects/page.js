@@ -1,5 +1,5 @@
 import ProjectAbout from "@/src/website/components/projects/ProjectAbout"
-import ProjectsPage from "@/src/website/components/projects/ProjectsPage"
+import Projects from "@/src/website/components/projects/projects"
 
 // ✅ SEO metadata for Projects page
 export const metadata = {
@@ -35,8 +35,7 @@ export const metadata = {
 const ProjectsPageContainer = () => {
   return (
     <>
-      <ProjectAbout />
-      <ProjectsPage />
+      <Projects />
     </>
   )
 }

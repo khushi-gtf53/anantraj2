@@ -38,6 +38,7 @@ const Footer = ({showFooter}) => {
         { label: "Blogs", href: "/blogs" },
         { label: "Contact Us", href: "/contact" },
         { label: "Career", href: "/career", expand: true },
+        { label: "Media Center", href: "/media-center", expand: true },
         // { label: "Property Investment", href: "/property-investment", expand: true } 
       ],
     },
@@ -59,8 +60,8 @@ const Footer = ({showFooter}) => {
     <footer>
       
       <div
-        className="pattern-div py-16"
-        style={{ background: "#FBF6F6 url(assets/pattern-bg.png) center", }}></div>
+        className="pattern-div lg:py-16 py-1o"
+        style={{ background: "#FBF6F6 url(assets/pattern-bg.png) center center", }}></div>
 
       {/* Explore Section */}
       <div className="px-5 lg:px-24 pb-16 lg:pt-14 pt-8">

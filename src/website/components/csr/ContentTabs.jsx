@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import CommonHeading from "../common/CommonHeading"
 import CommonPera from "../common/CommonPera"
 
@@ -17,7 +18,15 @@ const ContentTabs = ({ contentData }) => {
           >
             <div className={`tab_img flex w-full h-full ${i % 2 === 1 ? "justify-end" : "justify-start"
               }`}>
-              <img src={content.img} alt={content.title} />
+              <Image
+                src={content.img}
+                layout="responsive"
+                width={800}
+                height={600}
+                className="object-cover h-full w-full"
+                alt={contentData?.alt || "image"}
+              />
+              {/* <img src={content.img} alt={content.title} /> */}
             </div>
           </div>
 

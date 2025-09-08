@@ -16,6 +16,7 @@ export default function ReportsSection({
 
   // if (!data) return null;
 
+  console.log(openAccordion)
 
   return (
     <div className="wrapper" id="discover-investors">

@@ -23,10 +23,12 @@ const contentData = [
 
 export default function Csr() {
     return (
-        <>
+        <div className='bg-[#FBF6F6]'>
             <CsrAbout />
-            <CsrContent contentData={contentData} />
-            <CsrGallery />
-        </>
+            <div className='wrapper'>
+                <CsrContent contentData={contentData} />
+                <CsrGallery />
+            </div>
+        </div>
     )
 }
