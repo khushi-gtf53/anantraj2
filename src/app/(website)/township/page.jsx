@@ -3,7 +3,7 @@ import React, { useLayoutEffect, useRef } from "react";
 import TownshipExperience from "@/src/website/components/township/experience/Experience";
 import TownshipHero from "@/src/website/components/township/hero/Hero";
 import TownshipOverview from "@/src/website/components/township/overview/Overview";
-import TownshipProjects from "@/src/website/components/township/projects/Projects";
+// import TownshipProjects from "@/src/website/components/township/projects/Projects";
 import TownshipAmenities from "@/src/website/components/township/amenities/Amenities";
 import TownshipLocationmap from "@/src/website/components/township/location-map/LocationMap";
 import Footer from "@/src/website/components/common/Footer";
