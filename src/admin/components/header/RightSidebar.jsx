@@ -6,7 +6,7 @@ import { ImImage } from "react-icons/im";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { PiMountains } from "react-icons/pi";
 // import { NavLink } from "react-router-dom";
-import "react-tooltip/dist/react-tooltip.css";
+import "react-tooltip/tooltip.css";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { useApi } from "../../hooks/useApi";
 import { useCrud } from "../../hooks/useCrud";
