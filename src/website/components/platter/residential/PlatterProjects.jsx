@@ -56,18 +56,18 @@ const PlatterProjects = ({ tabs = [] }) => {
 
               <div className="project_info flex lg:gap-0 gap-[20px] flex-col justify-evenly lg:items-end">
                 <div className="flex flex-col lg:items-end gap-2">
-                  <div className="project_name uppercase font-sangbleu tracking-wider">
+                  <div className="project_name uppercase  font-sangbleu tracking-wider">
                     {project.name}
                   </div>
-                  <div className="project_location uppercase">
+                  <div className="project_location uppercase common_font">
                     {project.location}
                   </div>
                 </div>
                 <div className="flex flex-col lg:items-end gap-2">
-                  <div className="project_typology tracking-wider uppercase">
+                  <div className="project_typology tracking-wider uppercase  common_font">
                     {project.typology}
                   </div>
-                  <div className="project_status tracking-wider uppercase">
+                  <div className="project_status tracking-wider uppercase  common_font">
                     {project.status}
                   </div>
                   <div className="download py-2 mt-5 border-y text-center uppercase text-primaryblue font-bold">
@@ -96,9 +96,10 @@ const PlatterProjects = ({ tabs = [] }) => {
 
   return (
     <>
-      <section id="projects" className="platter_projects relative w-full wrapper bg-[#FBF6F6]">
+      <section id="discover" className="platter_projects relative w-full wrapper bg-[#FBF6F6]">
         {tabs.map((tab) => (
           <Accordion
+          id={tab.key}
             key={tab.key}
             label={tab.label}
             isOpen={activeTab === tab.key}

@@ -176,6 +176,10 @@ select {
   bottom: -30px;
 }
 
+.common_font{
+  font-size:  14px;
+}
+
 @media (width >=64rem
   /* 1024px */
 ) {
@@ -187,5 +191,8 @@ select {
   .wrapper2 {
     padding-inline: 100px;
     padding-top: 100px;
+  }
+  .common_font{
+    font-size: 16px;
   }
 }

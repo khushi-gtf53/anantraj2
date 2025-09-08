@@ -3,12 +3,13 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
-import { Suspense, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import Image from "next/image";
 
 import "swiper/css";
 import "swiper/css/navigation";
 
-import {Lightbox} from "yet-another-react-lightbox";
+import { Lightbox } from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
 const Banner = ({ slides = [] }) => {
@@ -20,14 +21,12 @@ const Banner = ({ slides = [] }) => {
   const [photoIndex, setPhotoIndex] = useState(0);
 
   return (
-    <section className="microsite_banner relative ">
-     
+    <section className="microsite_banner relative">
       <Swiper
         modules={[Navigation, Autoplay]}
         autoplay={{ delay: 2500, disableOnInteraction: false }}
         loop={true}
-        loopedslides={slides.length}
-        slidesPerView={"auto"}
+        slidesPerView="auto"
         spaceBetween={0}
         speed={600}
         centeredSlides={false}
@@ -35,11 +34,13 @@ const Banner = ({ slides = [] }) => {
         className="banner_slider overflow-hidden w-full h-[65vh]"
         onSwiper={(swiper) => {
           setTimeout(() => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-            swiper.navigation.destroy();
-            swiper.navigation.init();
-            swiper.navigation.update();
+            if (swiper.params.navigation) {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+              swiper.navigation.destroy();
+              swiper.navigation.init();
+              swiper.navigation.update();
+            }
           });
         }}
       >
@@ -48,17 +49,18 @@ const Banner = ({ slides = [] }) => {
             key={index}
             className="!w-auto flex justify-center items-center"
           >
-             <Suspense fallback="Loading...">
-            <img
+            <Image
               src={imgSrc}
               alt={`Slide ${index + 1}`}
+              width={1200}
+              height={800}
               className="object-cover h-[65vh] w-auto cursor-pointer"
+              priority={index === 0} 
               onClick={() => {
                 setPhotoIndex(index);
                 setOpen(true);
               }}
             />
-            </Suspense>
           </SwiperSlide>
         ))}
       </Swiper>
