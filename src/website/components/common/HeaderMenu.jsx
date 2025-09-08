@@ -22,25 +22,19 @@ const HeaderMenu = ({ isOpen, onClose }) => {
     [
       { label: "About Us", link: "aboutus" },
       { label: "CSR", link: "csr" },
-      { label: "Tax Benefits", link: "#" },
     ],
     [
-      { label: "Career", link: "#" },
+      { label: "Career", link: "careers" },
       { label: "Testimonials", link: "#" },
-      { label: "Property Investment", link: "#" },
     ],
     [
       { label: "Blogs", link: "blogs" },
       { label: "Gallery", link: "gallery" },
     ],
     [
-      { label: "EMI calculator", link: "#" },
-      { label: "Investors", link: "#" },
+      { label: "Investors", link: "investors" },
     ],
-    [
-      { label: "NRI corner", link: "#" },
-      { label: "Home loans", link: "#" },
-    ],
+
   ];
 
   const handleLinkClick = () => {

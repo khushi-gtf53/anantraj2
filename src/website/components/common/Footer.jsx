@@ -15,7 +15,7 @@ const Footer = ({showFooter}) => {
     {
       title: "Company",
       links: [
-        { label: "About Us", href: "/about" },
+        { label: "About Us", href: "/aboutus" },
         { label: "Investors", href: "/investors" },
         // { label: "NRI Corner", href: "/nri-corner", expand: true },
         // { label: "NRI Investors", href: "/nri-investors", expand: true },

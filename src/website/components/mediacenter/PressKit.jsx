@@ -34,7 +34,7 @@ const downloadItems = [
     img: "/assets/mediacenter/presskit/3.webp",
     files: [
       {
-        label: "Download Brochure",
+        label: "Brand Guidelines",
         path: "/assets/mediacenter/presskit/brochure.pdf",
       },
     ],

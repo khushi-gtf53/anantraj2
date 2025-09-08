@@ -39,8 +39,8 @@ export default function JobList() {
                 </h3>
               </div>
 
-              <button className="text-[#263A7F] py-[9px] px-12 border-y uppercase font-[600] text-[13px] lg:text-[16px] lg:justify-self-end lg:order-2 order-3">
-                Apply Now
+            <button  className="text-[#263A7F] py-[9px] px-12 border-y uppercase font-[600] text-[13px] lg:text-[16px] lg:justify-self-end lg:order-2 order-3">
+            <a href="#join-us">    Apply Now</a>
               </button>
 
               <div className="col-span-full lg:pt-8 pt-3 lg:order-3 order-2">

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import Image from "next/image";
 
 const Brands = () => {
   const [activeSection, setActiveSection] = useState(0);
@@ -44,13 +45,9 @@ const Brands = () => {
   useEffect(() => {
     const updateSlidesToShow = () => {
       const width = window.innerWidth;
-      if (width < 640) {
-        setSlidesToShow(1); // Mobile
-      } else if (width < 1024) {
-        setSlidesToShow(2); // Tablet
-      } else {
-        setSlidesToShow(3); // Desktop
-      }
+      if (width < 640) setSlidesToShow(1);
+      else if (width < 1024) setSlidesToShow(2);
+      else setSlidesToShow(3);
     };
 
     updateSlidesToShow();
@@ -66,28 +63,25 @@ const Brands = () => {
     if (nextSection < 0) nextSection = sections.length - 1;
     if (nextSection >= sections.length) nextSection = 0;
 
-    const slides = Array.from(sliderRef.current.children[0].children); // Access the inner flex container's children
-    const slideWidth = slides[0]?.offsetWidth || 250; // Dynamic slide width
+    const slides = Array.from(sliderRef.current.children[0].children);
+    const slideWidth = slides[0]?.offsetWidth || 250;
 
-    // Animate slides
     gsap.to(slides, {
       duration: 0.8,
       x: direction === "next" ? `-=${slideWidth}` : `+=${slideWidth}`,
-      ease: "expo.out", // Smoother easing for fluid motion
+      ease: "expo.out",
       onComplete: () => {
         setActiveSection(nextSection);
-        gsap.set(slides, { x: 0 }); // Reset position after animation
+        gsap.set(slides, { x: 0 });
 
-        // Reorder slides for seamless looping
         if (direction === "next") {
-          sliderRef.current.children[0].appendChild(slides[0]); // Move first slide to end
+          sliderRef.current.children[0].appendChild(slides[0]);
         } else {
-          sliderRef.current.children[0].prepend(slides[slides.length - 1]); // Move last slide to start
+          sliderRef.current.children[0].prepend(slides[slides.length - 1]);
         }
       },
     });
 
-    // Animate header
     gsap.to(headerRef.current, {
       duration: 0.4,
       opacity: 0,
@@ -101,7 +95,6 @@ const Brands = () => {
       },
     });
 
-    // Animate pillar
     gsap.to(pillarRef.current, {
       duration: 0.6,
       scale: 0.95,
@@ -147,12 +140,15 @@ const Brands = () => {
 
             <div className="grid grid-cols-12 h-[400px] w-full ">
               <div className="col-span-4 sm:col-span-2 flex items-end">
-                <img
-                  ref={pillarRef}
-                  src={sections[activeSection].image}
-                  className="object-contain h-[400px]"
-                  alt="pillar"
-                />
+                <div className="relative h-[400px] w-full">
+                  <Image
+                    ref={pillarRef}
+                    src={sections[activeSection].image}
+                    alt="pillar"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
               </div>
 
               <div className="col-span-3 flex items-center gap-2 lg:gap-4">
@@ -160,20 +156,23 @@ const Brands = () => {
                   onClick={() => changeSection("prev")}
                   className="lg:p-2 hover:bg-gray-200 rounded-full transition-colors"
                 >
-                  <img
-                    src="./assets/right-arrow.png"
+                  <Image
+                    src="/assets/right-arrow.png"
                     alt="left"
-                    className="h-[17px] lg:h-[20px] rotate-[180deg] object-cover"
+                    width={20}
+                    height={20}
+                    className="rotate-[180deg]"
                   />
                 </button>
                 <button
                   onClick={() => changeSection("next")}
                   className="lg:p-2 hover:bg-gray-200 rounded-full transition-colors"
                 >
-                  <img
-                    src="./assets/right-arrow.png"
+                  <Image
+                    src="/assets/right-arrow.png"
                     alt="right"
-                    className="h-[17px] lg:h-[20px] object-cover"
+                    width={20}
+                    height={20}
                   />
                 </button>
               </div>
@@ -184,9 +183,7 @@ const Brands = () => {
               >
                 <div className="flex justify-between lg:items-end w-full">
                   {Array.from({ length: slidesToShow + 1 }).map((_, offset) => {
-                    // Show extra slides for seamless looping
-                    const index =
-                      (activeSection + 1 + offset) % sections.length;
+                    const index = (activeSection + 1 + offset) % sections.length;
                     const section = sections[index];
                     return (
                       <div
@@ -200,11 +197,12 @@ const Brands = () => {
                         <h4 className="text-[10px] sm:text-[15px] text-center font-medium text-[#263A7F80] tracking-[1.5px]">
                           {section.subtitle}
                         </h4>
-                        <div className="pt-7 h-[150px]">
-                          <img
+                        <div className="pt-7 h-[150px] relative w-full">
+                          <Image
                             src={section.image}
-                            className="h-[100%]"
                             alt="pillar"
+                            fill
+                            className="object-contain"
                           />
                         </div>
                       </div>

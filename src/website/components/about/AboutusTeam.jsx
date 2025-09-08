@@ -1,6 +1,7 @@
 "use client";
 
 import gsap from "gsap/all";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const AboutusTeam = () => {
@@ -305,7 +306,9 @@ const AboutusTeam = () => {
                   style={{ opacity: 1 }}
                 />
 
-                <img
+                <Image
+                width={380}
+                height={380}
                   ref={incomingImageRef}
                   src={activePerson.image}
                   alt={activePerson.name}
@@ -420,7 +423,9 @@ const AboutusTeam = () => {
                       className={`relative group transition-all duration-200 }`}
                     >
                       <div className="sm:w-[90px] w-[60px] h-[60px] sm:h-[380px] overflow-hidden opacity-30 bg-gray-200">
-                        <img
+                        <Image
+                        width={90}
+                        height={380}
                           src={person.image}
                           alt={person.name}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"

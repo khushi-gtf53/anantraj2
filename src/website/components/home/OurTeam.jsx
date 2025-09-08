@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
@@ -14,27 +15,27 @@ const OurTeam = () => {
     {
       id: 1,
       title: "Shri Ashok Sarin - our founder",
-      image: "./assets/anant-raj.png",
+      image: "/assets/anant-raj.png",
       text: "Shri Ashok Sarin was the visionary founder and Chairman of Anant Raj Limited, with over five decades of unparalleled expertise in real estate.",
       role: "Our Founder",
     },
     {
       id: 2,
       title: "Amit Sarin",
-      image: "./assets/managing-director.jpg",
+      image: "/assets/managing-director.jpg",
       text: "The Managing Director oversees strategic operations and growth initiatives at Anant Raj Limited...",
       role: "Managing Director",
     },
     {
       id: 3,
       title: "Aman Sarin",
-      image: "./assets/ceo.jpg",
+      image: "/assets/ceo.jpg",
       text: "The Director & CEO leads the company's vision and executive decisions at Anant Raj Limited...",
       role: "Director & CEO",
     },
     {
       id: 4,
-      image: "./assets/coo.jpg",
+      image: "/assets/coo.jpg",
       title: "Ashim Sarin",
       text: "The Director & COO manages operational excellence and coordination at Anant Raj Limited...",
       role: "Director & COO",
@@ -54,7 +55,6 @@ const OurTeam = () => {
     }
   };
 
-  // Ensure navigation buttons are updated after Swiper initialization
   useEffect(() => {
     if (swiperInstance) {
       swiperInstance.navigation?.update();
@@ -90,11 +90,13 @@ const OurTeam = () => {
             {slides.map((slide) => (
               <SwiperSlide key={slide.id}>
                 <div className="flex justify-between flex-wrap items-center">
-                  <div className="basis-full lg:basis-[40%] lg:ml-[4px]">
-                    <img
-                      className="h-[300px] lg:h-[380px] w-full object-contain"
+                  <div className="basis-full lg:basis-[40%] lg:ml-[4px] relative h-[300px] lg:h-[380px] w-full">
+                    <Image
                       src={slide.image}
-                      alt="anant-raj"
+                      alt={slide.title}
+                      fill
+                      className="object-contain"
+                      priority={slide.id === 1} // preload first slide
                     />
                   </div>
                   <div className="basis-full lg:basis-[50%]">
@@ -103,20 +105,23 @@ const OurTeam = () => {
                         {slide.title}
                       </h3>
                       <div>
-                        {/* Desktop Navigation Buttons */}
                         <div className="flex">
                           <button className="swiper-prev-team cursor-pointer rotate-[180deg] mr-[10px]">
-                            <img
-                              src="./assets/right-arrow.png"
-                              alt="right"
-                              className="h-[17px] lg:h-[20px] object-cover"
+                            <Image
+                              src="/assets/right-arrow.png"
+                              alt="Previous"
+                              width={20}
+                              height={20}
+                              className="object-cover"
                             />
                           </button>
                           <button className="swiper-next-team cursor-pointer">
-                            <img
-                              src="./assets/right-arrow.png"
-                              alt="left"
-                              className="h-[17px] lg:h-[20px] object-cover"
+                            <Image
+                              src="/assets/right-arrow.png"
+                              alt="Next"
+                              width={20}
+                              height={20}
+                              className="object-cover"
                             />
                           </button>
                         </div>
@@ -126,46 +131,19 @@ const OurTeam = () => {
                       {slide.text}
                     </p>
                     <ul className="flex lg:text-start text-center flex-wrap justify-between items-center lg:mb-[35px]  my-[25px] tracking-[1px]">
-                      <li
-                        className={`cursor-pointer lg:text-left lg:text-[13px] lg:mb-0 mb-[10px] lg:basis-auto basis-[50%] ${
-                          activeRole === "Our Founder"
-                            ? "text-primaryblue font-[600]"
-                            : ""
-                        }`}
-                        onClick={() => handleRoleClick("Our Founder")}
-                      >
-                        <span>Our Founder</span>
-                      </li>
-                      <li
-                        className={`cursor-pointer lg:text-left lg:text-[13px] lg:mb-0 mb-[10px] lg:basis-auto basis-[50%] ${
-                          activeRole === "Managing Director"
-                            ? "text-primaryblue font-[600]"
-                            : ""
-                        }`}
-                        onClick={() => handleRoleClick("Managing Director")}
-                      >
-                        <span>Managing Director</span>
-                      </li>
-                      <li
-                        className={`cursor-pointer lg:text-end lg:text-[13px] lg:basis-auto basis-[50%] ${
-                          activeRole === "Director & CEO"
-                            ? "text-primaryblue font-[600]"
-                            : ""
-                        }`}
-                        onClick={() => handleRoleClick("Director & CEO")}
-                      >
-                        <span>Director & CEO</span>
-                      </li>
-                      <li
-                        className={`cursor-pointer lg:text-end lg:text-[13px] lg:basis-auto basis-[50%] ${
-                          activeRole === "Director & COO"
-                            ? "text-primaryblue font-[600]"
-                            : ""
-                        }`}
-                        onClick={() => handleRoleClick("Director & COO")}
-                      >
-                        <span>Director & COO</span>
-                      </li>
+                      {slides.map((s) => (
+                        <li
+                          key={s.role}
+                          className={`cursor-pointer lg:text-left lg:text-[13px] lg:mb-0 mb-[10px] lg:basis-auto basis-[50%] ${
+                            activeRole === s.role
+                              ? "text-primaryblue font-[600]"
+                              : ""
+                          }`}
+                          onClick={() => handleRoleClick(s.role)}
+                        >
+                          <span>{s.role}</span>
+                        </li>
+                      ))}
                     </ul>
                     <button className="font-[600] text-[14px] lg:mx-0 mx-auto lg:w-auto w-[60%] text-primaryblue text-center mt-[40px] flex justify-center lg:mt-[35px] font-lato border-y-[1px] py-[9px] px-[19px] lg:px-[25px] tracking-[1px] border-primaryblue border-y-solid">
                       EXPLORE OUR TEAM

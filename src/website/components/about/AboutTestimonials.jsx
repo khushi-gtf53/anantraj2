@@ -11,6 +11,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import { useState } from 'react';
+import Image from "next/image";
 
 const testimonialsData = [
     {
@@ -117,7 +118,9 @@ const AboutTestimonials = () => {
                         <SwiperSlide key={index}>
                             <div className="flex justify-center items-center h-full">
                                 <div className="flex gap-5 items-center justify-center">
-                                    <img
+                                    <Image
+                                    width={100}
+                                    height={100}
                                         src={item.image}
                                         alt={item.name}
                                         className={`w-[100px] h-[100px] rounded-full object-cover transition-all duration-300 ${activeIndex === index ? "opacity-100" : "opacity-40"}`}

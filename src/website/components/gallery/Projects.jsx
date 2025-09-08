@@ -35,7 +35,7 @@ const Projects = ({ tabs = [] }) => {
     if (!activeTabObj) return null;
     console.log('activeTabObj',activeTabObj);
 
-    const subTabs = Object.entries(activeTabObj.projects || {}).filter(([key, value])=>value.length > 0).map();
+    const subTabs = Object.entries(activeTabObj.projects || {}).filter(([key, value])=>value.length > 0);
     console.log('subTabs',subTabs);
     const subGallery = activeTabObj.projects[activeSubTab] || [];
 
@@ -76,7 +76,7 @@ const Projects = ({ tabs = [] }) => {
         {/* Images */}
         <div className="grid grid-cols-3 gap-5">
           {visibleImages.map((src, i) => (
-            <div key={i} className="projectImg cursor-pointer relative w-full h-64"  onClick={()=>setIndex(i)}>
+            <div key={i} className="projectImg cursor-pointer relative w-full h-20 sm:h-64"  onClick={()=>setIndex(i)}>
               <Image
                 src={src}
                 alt={`project-${i}`}
@@ -93,7 +93,7 @@ const Projects = ({ tabs = [] }) => {
             }).map((_, idx) => (
               <div
                 key={`empty-${idx}`}
-                className="projectImg relative w-full h-64 bg-gray-100"
+                className="projectImg relative w-full h-20 sm:h-64 bg-gray-100"
               />
             ))}
         </div>
