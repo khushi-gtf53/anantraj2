@@ -33,10 +33,8 @@ const Projects = ({ tabs = [] }) => {
   const renderProject = useMemo(() => {
     const activeTabObj = tabs.find((t) => t.key === activeTab);
     if (!activeTabObj) return null;
-    console.log('activeTabObj',activeTabObj);
 
     const subTabs = Object.entries(activeTabObj.projects || {}).filter(([key, value])=>value.length > 0);
-    console.log('subTabs',subTabs);
     const subGallery = activeTabObj.projects[activeSubTab] || [];
 
     const totalPages = Math.ceil(subGallery.length / imagesPerPage);

@@ -13,6 +13,7 @@ export default function AdminLayout({ children }) {
 
   const isLoginPage = pathname === "/admin/login";
   const hasProjectId = Boolean(params?.id);
+  if(typeof window !== 'undefined')return
 
   useEffect(() => {
     document.body.className = "admin-body";
