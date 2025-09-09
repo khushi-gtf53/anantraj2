@@ -19,7 +19,7 @@ const menuItems = [<IoDocumentTextOutline />,<ImImage />,<GoInfo />,<FaTools />
 
 const RightSidebar = ({projectId,activeSlug}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0); // default: Basic is active
+  const [activeIndex, setActiveIndex] = useState(0); 
     const api = useApi(BASE_ADMIN);
     const { tableData } = useCrud(api, "project-section-list");
 
