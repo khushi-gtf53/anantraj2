@@ -2,9 +2,9 @@
 const nextConfig = {
   // basePath: '/anantraj',
   // assetPrefix: '/anantraj/',
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // eslint: {
+  //   ignoreDuringBuilds: true,
+  // },
   // output: 'export', 
 };
 
