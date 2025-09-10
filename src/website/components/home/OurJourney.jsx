@@ -3,9 +3,10 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, EffectFade  } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/effect-fade";
 
 const slides = [
   { year: "1969", image: "/assets/timeline-1.png", text: "Anant Raj was founded in New Delhi, establishing a legacy of quality and ethical business practices." },
@@ -118,9 +119,11 @@ const Journey = () => {
         {/* Swiper */}
         <div className="relative mt-10">
           <Swiper
-            modules={[Navigation]}
+            modules={[Navigation, EffectFade]} // 👈 Fade module add kiya
             spaceBetween={30}
             slidesPerView={1}
+            effect="fade" // 👈 fade effect enable
+            fadeEffect={{ crossFade: true }} // 👈 smooth fade
             loop={true}
             navigation={{ prevEl: ".swiper-prev-timeline", nextEl: ".swiper-next-timeline" }}
             onSlideChange={handleSlideChange}

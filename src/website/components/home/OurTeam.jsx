@@ -3,13 +3,15 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/effect-fade";
 
 const OurTeam = () => {
   const [activeRole, setActiveRole] = useState("Our Founder");
   const [swiperInstance, setSwiperInstance] = useState(null);
+  const [visibleRoles, setVisibleRoles] = useState([]); 
 
   const slides = [
     {
@@ -35,16 +37,30 @@ const OurTeam = () => {
     },
     {
       id: 4,
-      image: "/assets/coo.jpg",
       title: "Ashim Sarin",
+      image: "/assets/coo.jpg",
       text: "The Director & COO manages operational excellence and coordination at Anant Raj Limited...",
       role: "Director & COO",
     },
+
   ];
+
+  useEffect(() => {
+    setVisibleRoles(slides.slice(0, Math.min(4, slides.length)).map((s) => s.role));
+  }, []);
 
   const handleSlideChange = (swiper) => {
     const currentIndex = swiper.realIndex;
-    setActiveRole(slides[currentIndex].role);
+    const currentRole = slides[currentIndex].role;
+
+    setVisibleRoles((prev) => {
+      if (!prev.includes(currentRole)) {
+        return [...prev, currentRole];
+      }
+      return prev;
+    });
+
+    setActiveRole(currentRole);
   };
 
   const handleRoleClick = (role) => {
@@ -52,6 +68,10 @@ const OurTeam = () => {
     if (slideIndex !== -1 && swiperInstance) {
       swiperInstance.slideToLoop(slideIndex);
       setActiveRole(role);
+
+      if (!visibleRoles.includes(role)) {
+        setVisibleRoles((prev) => [...prev, role]);
+      }
     }
   };
 
@@ -76,9 +96,11 @@ const OurTeam = () => {
       <div className="container mx-auto lg:px-4">
         <div className="swiper-container-team overflow-x-hidden">
           <Swiper
-            modules={[Navigation]}
+            modules={[Navigation, EffectFade]}
             spaceBetween={0}
             slidesPerView={1}
+            effect="fade"
+            fadeEffect={{ crossFade: true }}
             navigation={{
               prevEl: ".swiper-prev-team",
               nextEl: ".swiper-next-team",
@@ -96,7 +118,7 @@ const OurTeam = () => {
                       alt={slide.title}
                       fill
                       className="object-contain"
-                      priority={slide.id === 1} // preload first slide
+                      priority={slide.id === 1}
                     />
                   </div>
                   <div className="basis-full lg:basis-[50%]">
@@ -130,20 +152,22 @@ const OurTeam = () => {
                     <p className="border-y-[1px] lg:text-start text-center leading-[25px] mb-[25px] border-solid border-black py-[25px] lg:py-[40px] text-[14px] font-lato tracking-[1px]">
                       {slide.text}
                     </p>
-                    <ul className="flex lg:text-start text-center flex-wrap justify-between items-center lg:mb-[35px]  my-[25px] tracking-[1px]">
-                      {slides.map((s) => (
-                        <li
-                          key={s.role}
-                          className={`cursor-pointer lg:text-left lg:text-[13px] lg:mb-0 mb-[10px] lg:basis-auto basis-[50%] ${
-                            activeRole === s.role
-                              ? "text-primaryblue font-[600]"
-                              : ""
-                          }`}
-                          onClick={() => handleRoleClick(s.role)}
-                        >
-                          <span>{s.role}</span>
-                        </li>
-                      ))}
+                    <ul className="flex lg:text-start text-center flex-wrap justify-between items-center lg:mb-[35px] my-[25px] tracking-[1px]">
+                      {slides
+                        .filter((s) => visibleRoles.includes(s.role)) 
+                        .map((s) => (
+                          <li
+                            key={s.role}
+                            className={`cursor-pointer lg:text-left lg:text-[13px] lg:mb-0 mb-[10px] lg:basis-auto basis-[50%] ${
+                              activeRole === s.role
+                                ? "text-primaryblue font-[600]"
+                                : ""
+                            }`}
+                            onClick={() => handleRoleClick(s.role)}
+                          >
+                            <span>{s.role}</span>
+                          </li>
+                        ))}
                     </ul>
                     <button className="font-[600] text-[14px] lg:mx-0 mx-auto lg:w-auto w-[60%] text-primaryblue text-center mt-[40px] flex justify-center lg:mt-[35px] font-lato border-y-[1px] py-[9px] px-[19px] lg:px-[25px] tracking-[1px] border-primaryblue border-y-solid">
                       EXPLORE OUR TEAM

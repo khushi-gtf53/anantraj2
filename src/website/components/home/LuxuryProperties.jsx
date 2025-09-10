@@ -145,7 +145,6 @@ const LuxuryProperties = () => {
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const imageRefs = useRef([]);
   const sectionRef = useRef(null);
-  if(typeof window !== 'undefined')return
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 767);

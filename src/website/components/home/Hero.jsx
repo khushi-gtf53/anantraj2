@@ -8,7 +8,6 @@ const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
-  if(typeof window !== 'undefined')return
   // Detect mobile on client
   useEffect(() => {
     const checkScreen = () => setIsMobile(window.innerWidth < 768);
