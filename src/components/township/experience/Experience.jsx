@@ -14,7 +14,6 @@ const images = [
 ];
 
 const TownshipExperience = () => {
-    if(typeof window !== 'undefined')return
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
   

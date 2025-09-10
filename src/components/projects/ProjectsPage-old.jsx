@@ -77,7 +77,6 @@ const ProjectsPage = () => {
     "data centers",
   ];
   const [activeCategory, setActiveCategory] = useState("residential");
-  if(typeof window !== 'undefined')return
   // ✅ only check window size on client
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 767);

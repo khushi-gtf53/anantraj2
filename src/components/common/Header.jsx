@@ -23,7 +23,6 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
 
     // Set true if NOT on home page ("/")
     const isNonHomePage = pathname !== "/";

@@ -18,7 +18,6 @@ const Amenities = ({ data = [], heading = "", baseIconPath = "" }) => {
 
   // Animate on change
   useEffect(() => {
-    if (typeof window === "undefined") return;
 
     gsap.fromTo(
       ".amenityImg img",
