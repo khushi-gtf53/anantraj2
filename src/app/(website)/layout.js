@@ -18,6 +18,7 @@ const geistMono = Geist_Mono({
 // Page metadata (can override in individual pages too)
 export const metadata = {
   title: "My Website",
+   metadataBase: new URL("https://anantrajlimited.netlify.app/"),
   description: "Awesome website built with Next.js",
 };
 
