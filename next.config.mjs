@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    
-    eslint: {
+  basePath: '/anantraj',
+  assetPrefix: '/anantraj/',
+
+  eslint: {
     ignoreDuringBuilds: true,
-    
+
   },
 };
 
